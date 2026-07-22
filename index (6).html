@@ -1,0 +1,2673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Merin Reji — Digital Marketing Strategist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0f0e0d;
+    --paper: #f5f0e8;
+    --paper-dark: #ede7d9;
+    --accent: #c94a2b;
+    --accent-soft: #f0e0da;
+    --muted: #7a7060;
+    --border: rgba(15,14,13,0.12);
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'DM Sans', sans-serif;
+    --mono: 'DM Mono', monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.7;
+    cursor: none;
+    overflow-x: hidden;
+  }
+
+  /* Custom cursor */
+  .cursor {
+    position: fixed;
+    width: 10px; height: 10px;
+    background: var(--accent);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s, width 0.2s, height 0.2s, background 0.2s;
+  }
+  .cursor-ring {
+    position: fixed;
+    width: 36px; height: 36px;
+    border: 1.5px solid var(--accent);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: transform 0.18s ease, width 0.25s, height 0.25s, opacity 0.2s;
+    opacity: 0.5;
+  }
+  body:hover .cursor { opacity: 1; }
+
+  /* Nav */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.25rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    mix-blend-mode: multiply;
+  }
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+  }
+  .nav-links a:hover { opacity: 1; }
+
+  /* ---- HERO ---- */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 8rem 4rem 5rem 3rem;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.3s forwards;
+  }
+  .hero-name {
+    font-family: var(--serif);
+    font-size: clamp(3.5rem, 6vw, 5.5rem);
+    line-height: 1.0;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.5s forwards;
+  }
+  .hero-name em {
+    font-style: italic;
+    color: var(--accent);
+    display: block;
+  }
+  .hero-tagline {
+    font-size: 1.05rem;
+    color: var(--muted);
+    font-weight: 300;
+    max-width: 380px;
+    margin-top: 1.5rem;
+    line-height: 1.8;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.7s forwards;
+  }
+  .hero-tagline strong { color: var(--ink); font-weight: 500; }
+  .hero-cta {
+    margin-top: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.9s forwards;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--accent);
+    color: #fff;
+    padding: 0.8rem 1.6rem;
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .btn-primary:hover { background: #a03820; transform: translateY(-2px); }
+  .btn-ghost {
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .btn-ghost:hover { color: var(--ink); border-color: var(--ink); }
+  .hero-authority-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    margin-top: 1.5rem;
+    max-width: 620px;
+  }
+
+  .hero-authority-bar span {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.45rem 0.7rem;
+    background: rgba(201,74,43,0.08);
+    border: 1px solid rgba(201,74,43,0.18);
+    color: var(--accent);
+    line-height: 1.3;
+  }
+
+
+  .hero-right {
+    position: relative;
+    background: var(--paper-dark);
+    overflow: hidden;
+  }
+  .hero-right-content {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 5rem 3rem 3rem;
+  }
+  .hero-marquee-wrap {
+    overflow: hidden;
+    border-top: 1px solid rgba(245,240,232,0.08);
+    border-bottom: 1px solid rgba(245,240,232,0.08);
+    padding: 0.6rem 0;
+    margin-bottom: 0;
+  }
+  .hero-marquee {
+    display: flex;
+    gap: 3rem;
+    white-space: nowrap;
+    animation: marqueeScroll 18s linear infinite;
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.3);
+  }
+  @keyframes marqueeScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .hero-big-word {
+    font-family: var(--serif);
+    font-size: clamp(5rem, 11vw, 9.5rem);
+    font-weight: 700;
+    line-height: 0.9;
+    color: rgba(245,240,232,0.06);
+    letter-spacing: -0.02em;
+    user-select: none;
+    pointer-events: none;
+    margin-bottom: -1rem;
+  }
+  .hero-discipline-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+  .hero-discipline-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    opacity: 0;
+    animation: fadeUp 0.7s forwards;
+  }
+  .hero-discipline-item:nth-child(1) { animation-delay: 0.9s; }
+  .hero-discipline-item:nth-child(2) { animation-delay: 1.05s; }
+  .hero-discipline-item:nth-child(3) { animation-delay: 1.2s; }
+  .hero-discipline-item:nth-child(4) { animation-delay: 1.35s; }
+  .discipline-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+  .discipline-name {
+    font-family: var(--sans);
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.75);
+  }
+  .discipline-bar-wrap {
+    flex: 1;
+    height: 1px;
+    background: rgba(245,240,232,0.1);
+    position: relative;
+    overflow: hidden;
+  }
+  .discipline-bar {
+    position: absolute;
+    left: 0; top: 0; height: 100%;
+    background: var(--accent);
+    width: 0;
+    transition: width 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .discipline-bar.animate { width: var(--bar-w); }
+  .discipline-pct {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--accent);
+    letter-spacing: 0.06em;
+    flex-shrink: 0;
+  }
+  .hero-photo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 62%;
+    opacity: 0;
+    animation: fadeIn 1.2s 1.1s forwards;
+  }
+  .hero-photo-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      transparent 30%,
+      rgba(15,14,13,0.15) 60%,
+      rgba(15,14,13,0.75) 100%
+    );
+    z-index: 1;
+  }
+  .hero-right-inner {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    z-index: 2;
+    padding: 2rem;
+    opacity: 0;
+    animation: fadeIn 1.2s 1.3s forwards;
+  }
+  .hero-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5px;
+    width: 100%;
+    background: rgba(245,240,232,0.1);
+    border: 1px solid rgba(245,240,232,0.15);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  .stat-cell {
+    background: rgba(15,14,13,0.45);
+    padding: 1.25rem 1.25rem;
+    text-align: left;
+  }
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1;
+    color: #f5f0e8;
+  }
+  .stat-num span { color: var(--accent); }
+  .stat-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.55);
+    margin-top: 0.35rem;
+    font-weight: 500;
+  }
+  .hero-scroll {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0;
+    animation: fadeIn 1s 1.5s forwards;
+  }
+  .scroll-line {
+    width: 1px;
+    height: 50px;
+    background: linear-gradient(to bottom, var(--ink), transparent);
+    animation: scrollPulse 2s infinite;
+  }
+  .scroll-text {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    writing-mode: vertical-rl;
+  }
+  .hero-bg-text {
+    position: absolute;
+    bottom: -2rem;
+    right: -1rem;
+    font-family: var(--serif);
+    font-size: 18rem;
+    font-weight: 700;
+    color: rgba(15,14,13,0.04);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  /* ---- CHAPTER MARKER ---- */
+  .chapter {
+    padding: 1.5rem 3rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    border-top: 1px solid var(--border);
+  }
+  .chapter-num {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--accent);
+    letter-spacing: 0.12em;
+  }
+  .chapter-title {
+    font-family: var(--serif);
+    font-size: 0.9rem;
+    font-style: italic;
+    color: var(--muted);
+  }
+  .chapter-line { flex: 1; height: 1px; background: var(--border); }
+
+  /* ---- STORY SECTION ---- */
+  .story-section {
+    padding: 5rem 3rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .story-intro {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .story-label {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+  .story-heading {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    line-height: 1.2;
+    font-weight: 700;
+  }
+  .story-heading em { font-style: italic; color: var(--accent); }
+  .story-body {
+    font-size: 1.05rem;
+    color: var(--muted);
+    line-height: 1.9;
+    font-weight: 300;
+  }
+  .story-body p + p { margin-top: 1.2rem; }
+  .story-body strong { color: var(--ink); font-weight: 500; }
+
+  /* ---- TIMELINE ---- */
+  .timeline {
+    padding: 4rem 3rem 5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 3rem;
+    top: 6rem;
+    bottom: 3rem;
+    width: 1px;
+    background: var(--border);
+  }
+  .timeline-heading {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 3vw, 2.5rem);
+    margin-bottom: 3.5rem;
+    font-weight: 700;
+  }
+  .timeline-heading em { font-style: italic; color: var(--accent); }
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 3rem;
+    margin-bottom: 3.5rem;
+    position: relative;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.7s, transform 0.7s;
+  }
+  .timeline-item.visible { opacity: 1; transform: translateX(0); }
+  .timeline-dot {
+    position: absolute;
+    left: -1.25rem;
+    top: 0.4rem;
+    width: 9px; height: 9px;
+    background: var(--paper);
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+  }
+  .timeline-meta { padding-left: 1.5rem; }
+  .timeline-period {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+  .timeline-role {
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.15rem;
+  }
+  .timeline-company {
+    font-size: 0.85rem;
+    color: var(--muted);
+    font-weight: 400;
+  }
+  .timeline-content { padding-top: 0.1rem; }
+  .timeline-story {
+    font-size: 0.97rem;
+    color: var(--muted);
+    line-height: 1.8;
+    font-weight: 300;
+    margin-bottom: 1rem;
+  }
+  .timeline-story strong { color: var(--ink); font-weight: 500; }
+  .timeline-result {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--accent-soft);
+    border-left: 3px solid var(--accent);
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
+    color: var(--accent);
+    font-weight: 500;
+    font-family: var(--mono);
+    letter-spacing: 0.02em;
+  }
+
+  /* ---- CASE STUDY GRID ---- */
+  .cases-section {
+    background: var(--ink);
+    padding: 6rem 3rem;
+    color: var(--paper);
+  }
+  .cases-inner { max-width: 1100px; margin: 0 auto; }
+  .cases-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+  .cases-heading {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  .cases-heading em { font-style: italic; color: var(--accent); }
+  .cases-sub {
+    max-width: 280px;
+    font-size: 0.9rem;
+    color: rgba(245,240,232,0.5);
+    font-weight: 300;
+    line-height: 1.7;
+  }
+  .cases-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5px;
+    background: rgba(245,240,232,0.08);
+  }
+  .case-card {
+    background: var(--ink);
+    padding: 2.5rem;
+    cursor: pointer;
+    transition: background 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .case-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%; height: 3px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+    transform-origin: left;
+  }
+  .case-card:hover { background: rgba(245,240,232,0.04); }
+  .case-card:hover::after { transform: scaleX(1); }
+  .case-tag {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .case-title {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+    line-height: 1.25;
+    color: var(--paper);
+  }
+  .case-desc {
+    font-size: 0.88rem;
+    color: rgba(245,240,232,0.55);
+    line-height: 1.75;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+  }
+  .case-metric {
+    font-family: var(--serif);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--paper);
+  }
+  .case-metric span { color: var(--accent); }
+  .case-metric-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.4);
+    margin-top: 0.2rem;
+  }
+  .case-featured {
+    grid-column: span 2;
+    background: rgba(201,74,43,0.08) !important;
+    border: 1px solid rgba(201,74,43,0.3);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto;
+    align-items: start;
+    gap: 0 3rem;
+  }
+  .case-featured .case-tag { grid-column: 1; }
+  .case-featured .case-title {
+    grid-column: 1;
+    font-size: 1.7rem;
+  }
+  .case-featured .case-desc {
+    grid-column: 1;
+    max-width: 680px;
+  }
+  .case-featured .case-arrow {
+    grid-column: 2;
+    grid-row: 1 / 4;
+    position: static;
+    font-size: 2rem;
+    color: var(--accent);
+    opacity: 0.4;
+    align-self: start;
+    padding-top: 0.5rem;
+  }
+  .case-featured:hover { background: rgba(201,74,43,0.13) !important; }
+  .case-read-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 1.5rem;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(201,74,43,0.4);
+    padding-bottom: 2px;
+    transition: border-color 0.2s, opacity 0.2s;
+    grid-column: 1;
+  }
+  .case-read-link:hover { opacity: 0.7; border-color: var(--accent); }
+  .case-card .case-arrow {
+    position: absolute;
+    top: 2rem; right: 2rem;
+    font-size: 1.2rem;
+    color: rgba(245,240,232,0.2);
+    transition: color 0.2s, transform 0.2s;
+  }
+  .case-card:hover .case-arrow { color: var(--accent); transform: translate(3px,-3px); }
+
+
+
+  /* ---- CASE STUDY POPUPS ---- */
+  .case-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    background: rgba(15,14,13,0.72);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+  .case-modal.active { display: flex; }
+  .case-modal-panel {
+    width: min(620px, 100%);
+    background: var(--paper);
+    color: var(--ink);
+    border: 1px solid rgba(201,74,43,0.25);
+    box-shadow: 0 24px 80px rgba(0,0,0,0.35);
+    padding: 2rem;
+    position: relative;
+  }
+  .case-modal-kicker {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+  .case-modal-title {
+    font-family: var(--serif);
+    font-size: clamp(1.6rem, 3vw, 2.1rem);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+  .case-modal-body {
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.8;
+    font-weight: 300;
+    white-space: pre-line;
+  }
+  .case-modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    border: 0;
+    background: transparent;
+    font-size: 1.5rem;
+    line-height: 1;
+    color: var(--accent);
+    cursor: pointer;
+  }
+  .case-card { border: 0; text-align: left; width: 100%; font: inherit; color: inherit; }
+
+  /* ---- PROOF SECTION ---- */
+  .proof-section {
+    background: #0d0d0d;
+    padding: 6rem 3rem;
+    color: #f5f0e8;
+  }
+  .proof-inner { max-width: 1100px; margin: 0 auto; }
+  .proof-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: end;
+    margin-bottom: 4rem;
+  }
+  .proof-heading {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: #f5f0e8;
+  }
+  .proof-heading em { font-style: italic; color: var(--accent); }
+  .proof-sub {
+    font-size: 0.95rem;
+    color: rgba(245,240,232,0.45);
+    line-height: 1.8;
+    font-weight: 300;
+  }
+  .proof-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+  .proof-card-wide {
+    grid-column: span 2;
+  }
+  .proof-card {
+    position: relative;
+  }
+  .proof-browser {
+    background: #1a1a1a;
+    border-radius: 8px 8px 0 0;
+    padding: 0.6rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .browser-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+  }
+  .browser-dot:nth-child(1) { background: #ff5f57; }
+  .browser-dot:nth-child(2) { background: #febc2e; }
+  .browser-dot:nth-child(3) { background: #28c840; }
+  .browser-bar {
+    flex: 1;
+    background: rgba(255,255,255,0.06);
+    border-radius: 4px;
+    padding: 0.2rem 0.7rem;
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: rgba(245,240,232,0.25);
+    margin-left: 0.5rem;
+  }
+  .proof-screenshot {
+    width: 100%;
+    display: block;
+    border-radius: 0 0 6px 6px;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-top: none;
+    transition: filter 0.3s;
+    filter: brightness(0.95);
+  }
+  .proof-card:hover .proof-screenshot { filter: brightness(1.05); }
+  .proof-caption {
+    margin-top: 1rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+  .proof-caption-num {
+    font-family: var(--serif);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .proof-caption-text {
+    font-size: 0.85rem;
+    color: rgba(245,240,232,0.55);
+    line-height: 1.7;
+    font-weight: 300;
+    padding-top: 0.1rem;
+  }
+  .proof-caption-text strong { color: #f5f0e8; font-weight: 500; }
+  .proof-note {
+    margin-top: 3rem;
+    padding: 1.5rem 2rem;
+    border-left: 3px solid var(--accent);
+    background: rgba(201,74,43,0.06);
+  }
+  .proof-note p {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    font-style: italic;
+    color: rgba(245,240,232,0.7);
+    line-height: 1.7;
+  }
+  .proof-note p strong { color: #f5f0e8; font-style: normal; }
+  .creative-section {
+    padding: 6rem 3rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .creative-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 3rem;
+    align-items: end;
+  }
+  .creative-heading {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  .creative-heading em { font-style: italic; color: var(--accent); }
+  .creative-body {
+    font-size: 0.95rem;
+    color: var(--muted);
+    line-height: 1.8;
+    font-weight: 300;
+  }
+  .creative-tiles {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    gap: 1.5px;
+    background: var(--border);
+  }
+  .tile {
+    background: var(--paper-dark);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 200px;
+    transition: background 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .tile:hover { background: var(--accent-soft); }
+  .tile-wide { grid-column: span 2; }
+  .tile-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    opacity: 0.6;
+  }
+  .tile-type {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+  }
+  .tile-name {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+  .tile-desc {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-top: 0.5rem;
+    line-height: 1.6;
+  }
+  .tile-corner {
+    position: absolute;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    font-size: 1.3rem;
+    opacity: 0.2;
+  }
+
+  /* ---- BOOK SECTION ---- */
+  .book-section {
+    background: var(--paper-dark);
+    padding: 6rem 3rem;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .book-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 5rem;
+    align-items: center;
+  }
+  .book-cover {
+    aspect-ratio: 2/3;
+    background: var(--ink);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2.5rem 2rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 12px 16px 40px rgba(15,14,13,0.2);
+  }
+  .book-cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 30px,
+      rgba(255,255,255,0.015) 30px,
+      rgba(255,255,255,0.015) 31px
+    );
+  }
+  .book-cover-top {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    color: rgba(245,240,232,0.4);
+    text-transform: uppercase;
+  }
+  .book-title-display {
+    font-family: var(--serif);
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--paper);
+    line-height: 1.1;
+  }
+  .book-title-display em { font-style: italic; display: block; color: var(--accent); }
+  .book-author {
+    font-size: 0.8rem;
+    color: rgba(245,240,232,0.5);
+    font-weight: 300;
+    letter-spacing: 0.06em;
+  }
+  .book-content {}
+  .book-section-label {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+  .book-heading {
+    font-family: var(--serif);
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+  }
+  .book-heading em { font-style: italic; color: var(--accent); }
+  .book-text {
+    font-size: 1rem;
+    color: var(--muted);
+    line-height: 1.9;
+    font-weight: 300;
+    margin-bottom: 0.9rem;
+  }
+  .book-text strong { color: var(--ink); font-weight: 500; }
+  .book-pullquote {
+    border-left: 3px solid var(--accent);
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    background: var(--paper);
+  }
+  .book-pullquote p {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.6;
+  }
+  .book-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 2px;
+    transition: opacity 0.2s;
+  }
+  .book-link:hover { opacity: 0.7; }
+
+  /* ---- RESEARCH ---- */
+  .research-section {
+    padding: 5rem 3rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .research-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+  .research-card {
+    border: 1px solid var(--border);
+    padding: 2rem;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .research-card:hover { border-color: var(--accent); background: var(--accent-soft); }
+  .research-year {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+  }
+  .research-title {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.35;
+    margin-bottom: 0.6rem;
+  }
+  .research-venue {
+    font-size: 0.8rem;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  /* ---- CONTACT ---- */
+  .contact-section {
+    background: var(--ink);
+    padding: 7rem 3rem;
+    color: var(--paper);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .contact-bg {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+  }
+  .contact-bg-text {
+    font-family: var(--serif);
+    font-size: 28rem;
+    font-weight: 700;
+    color: rgba(245,240,232,0.03);
+    line-height: 1;
+    user-select: none;
+  }
+  .contact-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .contact-label {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.25rem;
+  }
+  .contact-heading {
+    font-family: var(--serif);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+  .contact-heading em { font-style: italic; color: var(--accent); }
+  .contact-sub {
+    font-size: 1rem;
+    color: rgba(245,240,232,0.5);
+    font-weight: 300;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+  }
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.9rem 2rem;
+    transition: background 0.2s, color 0.2s;
+  }
+  .contact-link-primary {
+    background: var(--accent);
+    color: #fff;
+  }
+  .contact-link-primary:hover { background: #a03820; }
+  .contact-link-ghost {
+    border: 1px solid rgba(245,240,232,0.2);
+    color: rgba(245,240,232,0.7);
+  }
+  .contact-link-ghost:hover { border-color: var(--paper); color: var(--paper); }
+  .contact-footer {
+    margin-top: 5rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(245,240,232,0.08);
+    font-size: 0.75rem;
+    color: rgba(245,240,232,0.25);
+    letter-spacing: 0.06em;
+  }
+
+  /* ---- TOOLS STRIP ---- */
+  .tools-strip {
+    padding: 3rem;
+    background: var(--paper-dark);
+    border-top: 1px solid var(--border);
+  }
+  .tools-label {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+  .tools-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.6rem;
+  }
+  .tool-pill {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    padding: 0.4rem 0.9rem;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .tool-pill:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ---- CULLENS ---- */
+  .cullens-section {
+    background: #1a1f1a;
+    padding: 6rem 3rem;
+    color: #e8ede2;
+  }
+  .cullens-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .cullens-intro {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 4rem;
+    align-items: start;
+  }
+  .cullens-heading {
+    font-family: var(--serif);
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 700;
+    line-height: 1.1;
+    color: #e8ede2;
+    margin-top: 0.75rem;
+  }
+  .cullens-heading em { font-style: italic; color: #8fbb6e; }
+  .cullens-body {
+    font-size: 1rem;
+    color: rgba(232,237,226,0.65);
+    line-height: 1.9;
+    font-weight: 300;
+    margin-bottom: 1rem;
+  }
+  .cullens-body strong { color: #e8ede2; font-weight: 500; }
+  .cullens-section .story-label { color: #8fbb6e; }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 220px;
+    gap: 4px;
+  }
+  .gallery-item {
+    overflow: hidden;
+    position: relative;
+  }
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease, filter 0.4s ease;
+    filter: saturate(0.85);
+  }
+  .gallery-item:hover img {
+    transform: scale(1.05);
+    filter: saturate(1.1);
+  }
+  .gallery-tall { grid-row: span 2; }
+  .gallery-wide { grid-column: span 2; }
+
+  .cullens-pullquote {
+    margin-top: 4rem;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    border-top: 1px solid rgba(232,237,226,0.1);
+    padding-top: 3rem;
+  }
+  .cullens-pullquote blockquote {
+    font-family: var(--serif);
+    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+    font-style: italic;
+    color: #e8ede2;
+    line-height: 1.5;
+    font-weight: 400;
+  }
+  .cullens-pullquote blockquote em { color: #8fbb6e; font-style: normal; }
+  .cullens-what {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    color: rgba(232,237,226,0.4);
+    line-height: 2;
+    text-transform: uppercase;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ---- RESULTS BANNER ---- */
+  .results-banner {
+    background: var(--ink);
+    padding: 0;
+    overflow: hidden;
+    border-top: 1px solid rgba(245,240,232,0.06);
+    border-bottom: 1px solid rgba(245,240,232,0.06);
+  }
+  .results-banner-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+  }
+  .result-item {
+    padding: 2.5rem 2rem;
+    border-right: 1px solid rgba(245,240,232,0.06);
+    position: relative;
+    transition: background 0.2s;
+  }
+  .result-item:last-child { border-right: none; }
+  .result-item:hover { background: rgba(245,240,232,0.03); }
+  .result-number {
+    font-family: var(--serif);
+    font-size: clamp(2.2rem, 3.5vw, 3rem);
+    font-weight: 700;
+    color: #f5f0e8;
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+  .result-number span { color: var(--accent); }
+  .result-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.4);
+    line-height: 1.5;
+    font-family: var(--mono);
+  }
+  .result-context {
+    font-size: 0.78rem;
+    color: rgba(245,240,232,0.25);
+    margin-top: 0.4rem;
+    font-style: italic;
+    line-height: 1.5;
+  }
+
+  /* ---- INDUSTRY BADGES ---- */
+  .industries-section {
+    padding: 4rem 3rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .industries-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+  .industry-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.75rem 1.25rem;
+    border: 1px solid var(--border);
+    background: var(--paper-dark);
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .industry-badge:hover { border-color: var(--accent); background: var(--accent-soft); }
+  .industry-icon {
+    font-size: 1rem;
+  }
+
+  /* ---- PROCESS SECTION ---- */
+  .process-section {
+    background: var(--paper-dark);
+    padding: 5rem 3rem;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .process-inner { max-width: 1100px; margin: 0 auto; }
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-top: 3rem;
+    position: relative;
+  }
+  .process-steps::before {
+    content: '';
+    position: absolute;
+    top: 2rem;
+    left: 12.5%;
+    right: 12.5%;
+    height: 1px;
+    background: linear-gradient(to right, var(--accent), transparent 50%, var(--accent));
+    opacity: 0.3;
+  }
+  .process-step {
+    padding: 0 2rem 0 0;
+    position: relative;
+  }
+  .process-num {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .process-num::before {
+    content: '';
+    display: inline-block;
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    border: 1.5px solid var(--accent);
+    background: var(--paper-dark);
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+  .process-step-title {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+  }
+  .process-step-desc {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  /* ---- TESTIMONIALS ---- */
+  .testimonials-section {
+    padding: 5rem 3rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2.5rem;
+  }
+  .testimonial-card {
+    background: var(--paper-dark);
+    border: 1px solid var(--border);
+    padding: 2.5rem;
+    position: relative;
+    border-radius: 8px;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .testimonial-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(201,74,43,0.3);
+    box-shadow: 0 12px 30px rgba(15,14,13,0.08);
+  }
+  .testimonial-card::before {
+    content: '\201C';
+    font-family: var(--serif);
+    font-size: 5rem;
+    color: var(--accent);
+    opacity: 0.15;
+    position: absolute;
+    top: 0.5rem;
+    left: 1.5rem;
+    line-height: 1;
+  }
+  .testimonial-text {
+    font-size: 0.95rem;
+    color: var(--muted);
+    line-height: 1.9;
+    font-weight: 300;
+    font-style: italic;
+    margin-bottom: 1.5rem;
+  }
+  .testimonial-author {
+    font-family: var(--serif);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  
+  .premium-testimonial {
+    background: #fff;
+    border-radius: 18px;
+    padding: 2.8rem;
+    border: 1px solid rgba(15,14,13,0.08);
+    box-shadow: 0 10px 30px rgba(15,14,13,0.05);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .premium-testimonial:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px rgba(15,14,13,0.08);
+  }
+
+  .quote-mark {
+    font-family: var(--serif);
+    font-size: 4rem;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 1rem;
+    opacity: 0.9;
+  }
+
+  .testimonial-footer {
+    margin-top: 2rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid rgba(15,14,13,0.08);
+  }
+
+  .testimonial-author {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 0.25rem;
+  }
+
+  .testimonial-company {
+    color: var(--accent);
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 0.2rem;
+  }
+
+  .testimonial-role-title {
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-family: var(--mono);
+  }
+
+
+  .testimonial-role {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-top: 0.2rem;
+  }
+
+  /* ---- THOUGHT LEADERSHIP HIGHLIGHT ---- */
+  .thought-leader-bar {
+    background: var(--accent);
+    padding: 1.1rem 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .thought-leader-bar p {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: #fff;
+    letter-spacing: 0.02em;
+  }
+  .thought-leader-bar p strong { font-weight: 700; }
+  .thought-leader-bar a {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.4);
+    padding-bottom: 1px;
+    white-space: nowrap;
+    transition: color 0.2s;
+    flex-shrink: 0;
+  }
+  .thought-leader-bar a:hover { color: #fff; }
+
+  /* ---- TOOLS GROUPED ---- */
+  .tools-grouped {
+    padding: 4rem 3rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .tools-category {
+    margin-bottom: 2rem;
+  }
+  .tools-category-label {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+  .tools-category-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  /* ---- SCREENSHOT-STYLE TOOLKIT ---- */
+  .tools-showcase {
+    background: #0f0e0d;
+    color: var(--paper);
+    padding: 4rem 3rem 3.5rem;
+  }
+  .tools-showcase-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+  .tools-showcase-header {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 4rem;
+    align-items: start;
+    margin-bottom: 2rem;
+  }
+  .tools-showcase-heading {
+    font-family: var(--serif);
+    font-size: clamp(2.4rem, 4vw, 3.4rem);
+    line-height: 1.1;
+    font-weight: 700;
+    color: var(--paper);
+  }
+  .tools-heading-line {
+    width: 48px;
+    height: 2px;
+    background: var(--accent);
+    margin-top: 1rem;
+  }
+  .tools-showcase-sub {
+    font-size: 1rem;
+    color: rgba(245,240,232,0.72);
+    line-height: 1.7;
+    max-width: 450px;
+  }
+  .toolkit-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.55rem;
+  }
+  .toolkit-card {
+    min-height: 106px;
+    display: grid;
+    grid-template-columns: 58px 1fr;
+    gap: 1rem;
+    align-items: center;
+    padding: 1.25rem;
+    border: 1px solid rgba(245,240,232,0.12);
+    background: rgba(245,240,232,0.035);
+    border-radius: 5px;
+  }
+  .toolkit-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: rgba(245,240,232,0.08);
+    color: var(--accent);
+    font-size: 1.6rem;
+    line-height: 1;
+  }
+  .toolkit-card h3 {
+    font-family: var(--sans);
+    font-size: 1rem;
+    color: var(--paper);
+    margin-bottom: 0.25rem;
+    font-weight: 600;
+  }
+  .toolkit-card p {
+    font-size: 0.82rem;
+    line-height: 1.55;
+    color: rgba(245,240,232,0.65);
+  }
+  .toolkit-principles {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--accent);
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+  }
+  .toolkit-principles div {
+    display: grid;
+    grid-template-columns: 42px 1fr;
+    column-gap: 0.75rem;
+    align-items: center;
+    padding: 0.6rem 1rem 0.6rem 0;
+    border-right: 1px solid rgba(245,240,232,0.16);
+  }
+  .toolkit-principles div:last-child { border-right: none; }
+  .toolkit-principles span {
+    grid-row: span 2;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: rgba(245,240,232,0.08);
+    color: var(--accent);
+  }
+  .toolkit-principles strong {
+    color: var(--paper);
+    font-size: 0.9rem;
+  }
+  .toolkit-principles p {
+    color: rgba(245,240,232,0.55);
+    font-size: 0.76rem;
+    line-height: 1.4;
+  }
+
+  /* ---- SCREENSHOT-STYLE TESTIMONIALS ---- */
+  .premium-testimonials-section {
+    background: var(--paper);
+    max-width: none;
+    padding: 3.2rem 3rem 4rem;
+  }
+  .premium-testimonials-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 0.9fr 1.6fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .premium-testimonials-title .story-heading {
+    font-size: clamp(2rem, 3vw, 2.8rem);
+    line-height: 1.15;
+  }
+  .premium-testimonials-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .premium-testimonial-card {
+    background: #fffaf3;
+    border: 1px solid rgba(15,14,13,0.08);
+    border-radius: 8px;
+    padding: 1.6rem 2rem;
+    box-shadow: 0 10px 25px rgba(15,14,13,0.06);
+  }
+  .premium-testimonial-card .quote-mark {
+    font-family: var(--serif);
+    font-size: 3.2rem;
+    color: var(--accent);
+    line-height: 0.8;
+    margin-bottom: 0.4rem;
+  }
+  .premium-testimonial-card .testimonial-text {
+    font-size: 0.86rem;
+    color: var(--ink);
+    line-height: 1.75;
+    font-style: italic;
+    margin-bottom: 1rem;
+  }
+  .premium-testimonial-divider {
+    height: 1px;
+    background: rgba(15,14,13,0.12);
+    margin: 1rem 0 1rem;
+  }
+  .premium-testimonial-card .testimonial-author {
+    font-family: var(--sans);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 0.25rem;
+  }
+  .linkedin-badge {
+    display: inline-grid;
+    place-items: center;
+    width: 16px;
+    height: 16px;
+    border-radius: 2px;
+    background: #0a66c2;
+    color: #fff;
+    font-size: 0.62rem;
+    font-family: Arial, sans-serif;
+    margin-left: 0.35rem;
+    vertical-align: middle;
+  }
+  .premium-testimonial-card .testimonial-company {
+    color: var(--accent);
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-bottom: 0.15rem;
+  }
+  .premium-testimonial-card .testimonial-role-title {
+    font-size: 0.78rem;
+    color: var(--muted);
+    font-family: var(--sans);
+    text-transform: none;
+    letter-spacing: 0;
+  }
+
+  @media (max-width: 900px) {
+    .tools-showcase-header,
+    .premium-testimonials-inner {
+      grid-template-columns: 1fr;
+    }
+    .toolkit-grid,
+    .premium-testimonials-grid {
+      grid-template-columns: 1fr;
+    }
+    .toolkit-principles {
+      grid-template-columns: 1fr;
+    }
+    .toolkit-principles div {
+      border-right: none;
+      border-bottom: 1px solid rgba(245,240,232,0.1);
+    }
+  }
+
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">Merin Reji</a>
+  <ul class="nav-links">
+    <li><a href="#story">Story</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#proof">Proof</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#book">Book</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">SEO & Growth Strategist · Performance Marketing · Dublin, Ireland</p>
+    <h1 class="hero-name">
+      Merin<br>
+      <em>Reji</em>
+    </h1>
+    <p class="hero-tagline">
+      I don't just run campaigns.<br>
+      I find the <strong>story behind the brand</strong> — and turn it into traffic, trust, and growth that lasts.
+    </p>
+
+    <div class="hero-authority-bar">
+      <span>55% Organic Growth</span>
+      <span>International SEO</span>
+      <span>Performance Marketing</span>
+      <span>CRM & Lifecycle</span>
+      <span>Technical SEO</span>
+      <span>Multi-market Campaigns</span>
+    </div>
+    <div class="hero-cta">
+      <a href="#work" class="btn-primary">See the work ↓</a>
+      <a href="#contact" class="btn-ghost">Let's talk</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img class="hero-photo"
+         src="https://i.ibb.co/8gB7LbL9/Whats-App-Image-2026-05-28-at-12-07-02-AM.jpg"
+         alt="Merin Reji">
+    <div class="hero-photo-overlay"></div>
+    <div class="hero-right-inner">
+      <div class="hero-stats">
+        <div class="stat-cell">
+          <div class="stat-num" data-count="55" data-suffix="%">0<span>%</span></div>
+          <div class="stat-label">Organic traffic growth</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-num" data-count="310" data-suffix="K">0<span>K</span></div>
+          <div class="stat-label">Total search clicks</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-num" data-count="5" data-suffix="+">0<span>+</span></div>
+          <div class="stat-label">Years B2B & B2C</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-num" data-count="35" data-suffix="%">0<span>%</span></div>
+          <div class="stat-label">Campaign reach lift</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span class="scroll-text">Scroll</span>
+  </div>
+</section>
+
+<!-- THOUGHT LEADERSHIP BAR -->
+<div class="thought-leader-bar">
+  <p>📖 <strong>Published author & conference speaker</strong> — Presented original SEO research at PARC Conference, Dublin 2026 · Author of <em>Certified Misfit</em></p>
+  <a href="#book">See publications ↓</a>
+</div>
+
+<!-- CHAPTER 01 -->
+<div class="chapter" id="story">
+  <span class="chapter-num">Chapter 01</span>
+  <span class="chapter-line"></span>
+  <span class="chapter-title">Where the story begins</span>
+</div>
+
+<!-- ABOUT / STORY -->
+<section class="story-section reveal">
+  <div class="story-intro">
+    <div>
+      <p class="story-label">About</p>
+      <h2 class="story-heading">An engineer<br>who learned<br>to <em>listen</em></h2>
+    </div>
+    <div class="story-body">
+      <p>I started with code. Two degrees in Computer Science gave me the ability to think in systems — to see how things connect, where they break, and how to make them faster. But somewhere along the way, I realised what I was most drawn to wasn't the architecture of software.</p>
+      <p>It was the architecture of <strong>attention</strong>.</p>
+      <p>How does a person find something they didn't know they were looking for? How does a brand earn trust in a search result, a scroll, a headline? That question pulled me into SEO and digital marketing — and I've spent five years finding the answer, one campaign at a time.</p>
+      <p>Today I work at the intersection of <strong>technical SEO, performance marketing, CRM, paid media, and content strategy</strong>. I've grown organic traffic by 55% for a global B2B company, led multi-brand campaigns across five verticals, and built a non-profit's digital presence from a wireframe up. I also wrote a book. Because some stories need more than a landing page.</p>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS BANNER -->
+<div class="results-banner">
+  <div class="results-banner-inner">
+    <div class="result-item reveal">
+      <div class="result-number">55<span>%</span></div>
+      <div class="result-label">Organic traffic growth</div>
+      <div class="result-context">Built through SEO strategy & technical optimisation</div>
+    </div>
+    <div class="result-item reveal">
+      <div class="result-number">310<span>K</span></div>
+      <div class="result-label">Total search clicks</div>
+      <div class="result-context">9.61M impressions generated</div>
+    </div>
+    <div class="result-item reveal">
+      <div class="result-number">35<span>%</span></div>
+      <div class="result-label">Campaign reach lift</div>
+      <div class="result-context">Seasonal video campaign, 6 weeks</div>
+    </div>
+    <div class="result-item reveal">
+      <div class="result-number">5<span>+</span></div>
+      <div class="result-label">Industries served</div>
+      <div class="result-context">B2B, Fintech, Tourism, Health, Non-profit</div>
+    </div>
+    <div class="result-item reveal">
+      <div class="result-number">5<span>+</span></div>
+      <div class="result-label">Years experience</div>
+      <div class="result-context">Senior B2B & B2C strategy</div>
+    </div>
+  </div>
+</div>
+
+<!-- INDUSTRY BADGES -->
+<section class="industries-section reveal">
+  <p class="story-label">Sectors & industries</p>
+  <h2 class="story-heading" style="font-size:1.6rem;">Built for range. <em>Proven across industries.</em></h2>
+  <div class="industries-grid">
+    <div class="industry-badge">B2B SaaS & IT Services</div>
+    <div class="industry-badge">Fintech & Financial Services</div>
+    <div class="industry-badge">Healthcare & Wellness</div>
+    <div class="industry-badge">Luxury Tourism</div>
+    <div class="industry-badge">Non-profit & Social Impact</div>
+    <div class="industry-badge">E-commerce & Retail</div>
+    <div class="industry-badge">Home Services</div>
+    <div class="industry-badge">Luxury Automotive</div>
+  </div>
+
+</section>
+
+<!-- CHAPTER 02 -->
+<div class="chapter">
+  <span class="chapter-num">Chapter 02</span>
+  <span class="chapter-line"></span>
+  <span class="chapter-title">The journey, told honestly</span>
+</div>
+
+<!-- TIMELINE -->
+<section class="timeline" id="timeline">
+  <h2 class="timeline-heading reveal">Five years of<br><em>making things grow</em></h2>
+
+  <div class="timeline-item">
+    <div class="timeline-meta">
+      <div class="timeline-dot"></div>
+      <p class="timeline-period">Oct 2025 — Present</p>
+      <p class="timeline-role">Creative Strategist</p>
+      <p class="timeline-company">Youth Wellbeing Non-Profit · Dublin</p>
+    </div>
+    <div class="timeline-content">
+      <p class="timeline-story">A youth wellbeing non-profit is an organisation rewriting what emotional wellbeing looks like for young people. My brief: make the world notice. I've been leading a full site SEO revamp — architecture, metadata, internal linking — while also running digital strategy for <em>an editorial impact platform</em> and designing the brand creatives that give the organisation its visual voice.</p>
+      <div class="timeline-result">↑ Building organic presence from the ground up</div>
+    </div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-meta">
+      <div class="timeline-dot"></div>
+      <p class="timeline-period">Jul 2024 — Jul 2025</p>
+      <p class="timeline-role">Digital Growth Consultant</p>
+      <p class="timeline-company">Global Digital Consultancy · Remote</p>
+    </div>
+    <div class="timeline-content">
+      <p class="timeline-story">Multiple brands. Multiple markets. One brief: grow. I owned end-to-end CRM lifecycle strategy — designing customer journeys from acquisition through retention, win-back flows, segmentation, A/B testing. I ran paid campaigns across Meta and Google, and grew organic traffic significantly for a Malta-based yacht tourism brand through international SEO. I also delivered compliant digital campaigns in Fintech — an industry where one wrong word costs a client their licence.</p>
+      <div class="timeline-result">↑ 35% increase in seasonal campaign reach</div>
+    </div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-meta">
+      <div class="timeline-dot"></div>
+      <p class="timeline-period">Sep 2022 — Jul 2025</p>
+      <p class="timeline-role">SEO Specialist</p>
+      <p class="timeline-company">Global IT Support Company · India</p>
+    </div>
+    <div class="timeline-content">
+      <p class="timeline-story">I was hired as the <strong>first dedicated SEO person</strong> at the company — a global B2B/B2C IT & Support Outsourcing company with a strong US client base. There was no playbook. I wrote one. Over almost three years, I built the SEO function from zero: technical audits, hreflang configurations for multi-market clients, schema markup, Core Web Vitals, link building, keyword strategy, and reporting. The kind of work that doesn't get noticed until the numbers do.</p>
+      <div class="timeline-result">↑ 55% growth in organic search traffic</div>
+    </div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-meta">
+      <div class="timeline-dot"></div>
+      <p class="timeline-period">Feb 2020 — Aug 2022</p>
+      <p class="timeline-role">SEO Analyst</p>
+      <p class="timeline-company">Dubai Digital Agency</p>
+    </div>
+    <div class="timeline-content">
+      <p class="timeline-story">Where I learned to work fast, work across clients, and work in competitive markets. Healthcare. Luxury car hire. Home services. Competitive SEO markets are not forgiving. I managed campaigns across sectors, ran Google Ads, produced blog content, and learned the hard lesson that <strong>ranking isn't the goal — converting is</strong>. I've carried that lesson into every role since.</p>
+      <div class="timeline-result">↑ Improved local rankings in luxury & healthcare verticals</div>
+    </div>
+  </div>
+</section>
+
+<!-- CHAPTER 03 -->
+<div class="chapter" id="work">
+  <span class="chapter-num">Chapter 03</span>
+  <span class="chapter-line"></span>
+  <span class="chapter-title">The work that moved the needle</span>
+</div>
+
+<!-- CASE STUDIES -->
+<section class="cases-section">
+  <div class="cases-inner">
+    <div class="cases-header reveal">
+      <h2 class="cases-heading">Selected<br><em>case studies</em></h2>
+      <p class="cases-sub">Each project started with a question. Here's what happened when we answered it.</p>
+    </div>
+    <div class="cases-grid reveal">
+
+      <!-- FEATURED CASE STUDY — CONFIDENTIAL FMCG -->
+      <a href="icecream-casestudy.html" class="case-card case-featured case-icecream" style="text-decoration:none; display:block; cursor:pointer;">
+        <span class="case-arrow">↗</span>
+        <p class="case-tag">FMCG · Artisan Food · Ireland · Full Strategy</p>
+
+        <h3 class="case-title">Premium Irish Artisan Food Brand</h3>
+        <p class="case-desc">A full digital audit and 3-phase marketing strategy for a confidential artisan food brand — heritage-led positioning, audience development, and a story that deserved a bigger stage.</p>
+        <div style="display:flex; gap:2rem; margin-top:1.25rem; flex-wrap:wrap;">
+          <div>
+            <div class="case-metric">60<span>%</span></div>
+            <p class="case-metric-label">Projected Instagram reach increase</p>
+          </div>
+          <div>
+            <div class="case-metric">€60<span>K+</span></div>
+            <p class="case-metric-label">Projected revenue attribution</p>
+          </div>
+          <div>
+            <div class="case-metric">5</div>
+            <p class="case-metric-label">Customer personas developed</p>
+          </div>
+        </div>
+        <p style="margin-top:1.5rem; font-family:var(--mono); font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); border-bottom: 1px solid rgba(201,74,43,0.3); display:inline-block; padding-bottom:2px;">View case study ↗</p>
+      </a>
+
+      <!-- FEATURED CASE STUDY — HEALTHCARE -->
+      <a href="healthcare-casestudy.html" class="case-card case-featured" style="text-decoration:none; display:block; cursor:pointer; background: rgba(91,155,213,0.06) !important; border: 1px solid rgba(91,155,213,0.2);">
+        <span class="case-arrow" style="color:rgba(91,155,213,0.5);">↗</span>
+        <p class="case-tag" style="color:#5b9bd5;">Healthcare · Mental Wellness · Dublin · SEO Strategy</p>
+        <h3 class="case-title">Mental Health & Psychotherapy Services</h3>
+        <p class="case-desc">A full digital audit and 6-month growth roadmap for a Dublin-based therapy practice — in a sector where trust is the product, and being invisible online is never a neutral outcome.</p>
+        <div style="display:flex; gap:2rem; margin-top:1.25rem; flex-wrap:wrap;">
+          <div>
+            <div class="case-metric" style="color:#f5f0e8;">20<span style="color:#5b9bd5;">%</span></div>
+            <p class="case-metric-label">Target organic traffic increase</p>
+          </div>
+          <div>
+            <div class="case-metric" style="color:#f5f0e8;">10<span style="color:#5b9bd5;">+</span></div>
+            <p class="case-metric-label">Target keyword rankings</p>
+          </div>
+          <div>
+            <div class="case-metric" style="color:#f5f0e8;">163<span style="color:#5b9bd5;">×</span></div>
+            <p class="case-metric-label">Backlink gap closed vs. top competitor</p>
+          </div>
+        </div>
+        <p style="margin-top:1.5rem; font-family:var(--mono); font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; color:#5b9bd5; border-bottom: 1px solid rgba(91,155,213,0.3); display:inline-block; padding-bottom:2px;">View case study ↗</p>
+      </a>
+
+      <button type="button" class="case-card" data-case-title="Building SEO from zero at a global IT & Support Outsourcing company" data-case-kicker="Technical SEO · B2B · 2022–2025" data-case-body="A confidential global IT & Support Outsourcing company had no dedicated SEO function. I built the system from the ground up: technical audits, keyword strategy, schema, Core Web Vitals, reporting, and international SEO support.
+
+Result focus: 55% organic traffic growth, stronger search visibility, and a repeatable SEO process the business could keep using.">
+        <span class="case-arrow">↗</span>
+        <p class="case-tag">Technical SEO · B2B · 2022–2025</p>
+        <h3 class="case-title">Building SEO from zero at a global IT & Support Outsourcing company</h3>
+        <p class="case-desc">A global IT & Support Outsourcing company had no SEO function. I built it. Every tool, every process, every playbook — from technical audits to international hreflang implementation.</p>
+        <div class="case-metric">55<span>%</span></div>
+        <p class="case-metric-label">Organic traffic growth over 3 years</p>
+      </button>
+
+      <button type="button" class="case-card" data-case-title="Taking a Malta yacht tourism brand global through organic search" data-case-kicker="International SEO · Tourism · 2024" data-case-body="A confidential luxury tourism brand needed international search visibility for a niche, multilingual audience. I worked on keyword expansion, content optimisation, and technical improvements using GA4, Moz, and Screaming Frog.
+
+Result focus: moving from minimal organic visibility to consistent international traffic signals.">
+        <span class="case-arrow">↗</span>
+        <p class="case-tag">International SEO · Tourism · 2024</p>
+        <h3 class="case-title">Taking a Malta yacht tourism brand global through organic search</h3>
+        <p class="case-desc">A niche luxury product. A multilingual audience. A tight timeline. Keyword expansion, content optimisation, and technical improvements using GA4, Moz, and Screaming Frog.</p>
+        <div class="case-metric">∞<span>→</span></div>
+        <p class="case-metric-label">From no organic presence to consistent international traffic</p>
+      </button>
+
+      <button type="button" class="case-card" data-case-title="Seasonal campaign strategy that cut through the noise" data-case-kicker="Video & Social · Multi-brand · 2024" data-case-body="For a confidential multi-brand campaign, the challenge was timing: reach the right audience before the seasonal window closed. I supported the campaign story, creative direction, distribution, and performance review.
+
+Result focus: 35% increase in seasonal campaign reach.">
+        <span class="case-arrow">↗</span>
+        <p class="case-tag">Video & Social · Multi-brand · 2024</p>
+        <h3 class="case-title">Seasonal campaign strategy that cut through the noise</h3>
+        <p class="case-desc">Video content for a time-sensitive campaign window. The brief: reach the right people before the moment passes. Scripted, designed and distributed across social channels.</p>
+        <div class="case-metric">35<span>%</span></div>
+        <p class="case-metric-label">Increase in seasonal campaign reach</p>
+      </button>
+
+      <button type="button" class="case-card" data-case-title="CRM lifecycle strategy across five verticals including Fintech" data-case-kicker="CRM · Lifecycle Marketing · 2024–2025" data-case-body="Across confidential brands and verticals, I worked on customer journey design: onboarding sequences, post-purchase nurture, win-back flows, segmentation, and A/B testing.
+
+Result focus: improved repeat engagement and long-term customer value, with careful attention to compliant messaging in regulated industries.">
+        <span class="case-arrow">↗</span>
+        <p class="case-tag">CRM · Lifecycle Marketing · 2024–2025</p>
+        <h3 class="case-title">CRM lifecycle strategy across five verticals including Fintech</h3>
+        <p class="case-desc">Onboarding sequences. Post-purchase nurture. Win-back flows. Segmentation. A/B testing. For regulated industries including Finance — where audience-specific, compliant messaging isn't optional.</p>
+        <div class="case-metric">↑<span> LTV</span></div>
+        <p class="case-metric-label">Improved repeat engagement & long-term customer value</p>
+      </button>
+    </div>
+  </div>
+</section>
+
+<div class="case-modal" id="caseModal" aria-hidden="true">
+  <div class="case-modal-panel" role="dialog" aria-modal="true" aria-labelledby="caseModalTitle">
+    <button type="button" class="case-modal-close" id="caseModalClose" aria-label="Close case study summary">×</button>
+    <p class="case-modal-kicker" id="caseModalKicker"></p>
+    <h3 class="case-modal-title" id="caseModalTitle"></h3>
+    <p class="case-modal-body" id="caseModalBody"></p>
+  </div>
+</div>
+
+<!-- PROCESS SECTION -->
+<section class="process-section" id="process">
+  <div class="process-inner">
+    <div class="reveal">
+      <p class="story-label">How I work</p>
+      <h2 class="story-heading">Strategy first. <em>Always.</em></h2>
+    </div>
+    <div class="process-steps reveal">
+      <div class="process-step">
+        <div class="process-num">01 · Audit</div>
+        <p class="process-step-title">Diagnose before prescribing</p>
+        <p class="process-step-desc">Every engagement starts with a full audit — technical health, content gaps, competitor landscape, and audience signals. No assumptions, just data.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">02 · Strategy</div>
+        <p class="process-step-title">Build the roadmap</p>
+        <p class="process-step-desc">Translate findings into a prioritised plan — channel mix, content pillars, keyword targets, campaign structure — aligned to business goals, not vanity metrics.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">03 · Execute</div>
+        <p class="process-step-title">Ship and iterate fast</p>
+        <p class="process-step-desc">From technical fixes to content production to paid campaigns — I execute end-to-end, coordinating across teams or working independently as needed.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">04 · Measure</div>
+        <p class="process-step-title">Report what matters</p>
+        <p class="process-step-desc">GA4, Search Console, Looker Studio dashboards built around the metrics that actually move the business — not just impressions and clicks.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- BUSINESS OUTCOMES -->
+<section class="industries-section reveal">
+  <p class="story-label">Business impact</p>
+  <h2 class="story-heading" style="font-size:1.8rem;">Beyond rankings. <em>Focused on business growth.</em></h2>
+
+  <div class="industries-grid" style="margin-top:2rem;">
+    <div class="industry-badge">Increased qualified lead acquisition through SEO & funnel optimisation</div>
+    <div class="industry-badge">Revenue-focused SEO and performance marketing strategies</div>
+    <div class="industry-badge">Improved customer retention flows and lifecycle engagement</div>
+    <div class="industry-badge">Reduced acquisition friction through technical and UX improvements</div>
+    <div class="industry-badge">Built KPI dashboards focused on ROI, conversion, and engagement</div>
+    <div class="industry-badge">Multi-channel growth strategies across SEO, paid media, CRM & content</div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section premium-testimonials-section" id="testimonials">
+  <div class="premium-testimonials-inner">
+    <div class="premium-testimonials-title">
+      <p class="story-label">What people say</p>
+      <h2 class="story-heading">Words from colleagues<br>I’ve worked with</h2>
+      <div class="tools-heading-line"></div>
+    </div>
+
+    <div class="premium-testimonials-grid reveal">
+      <div class="premium-testimonial-card">
+        <div class="quote-mark">“</div>
+        <p class="testimonial-text">Merin has always been recognised as a dedicated and hardworking professional. I have personally heard positive feedback about her commitment, work ethic, and professionalism from senior management on multiple occasions. She approaches every responsibility with sincerity and consistently shows enthusiasm in learning, improving, and contributing to the team's success. Her ability to handle tasks efficiently, along with her positive attitude and collaborative nature, made her a valuable part of the workplace. Her passion for digital marketing and continuous growth clearly reflects in her work.</p>
+        <div class="premium-testimonial-divider"></div>
+        <p class="testimonial-author">Nidhin Anil</p>
+        <p class="testimonial-company">Digital Marketing Agency</p>
+        <p class="testimonial-role-title">Head, Marketing</p>
+      </div>
+
+      <div class="premium-testimonial-card">
+        <div class="quote-mark">“</div>
+        <p class="testimonial-text">Merin is a rare mix of technical depth and creative thinking. She communicates clearly, takes ownership of projects, and consistently delivers thoughtful work grounded in real data. She has a genuine ability to balance the analytical with the creative — and it shows in the results.</p>
+        <div class="premium-testimonial-divider"></div>
+        <p class="testimonial-author">Anju S.</p>
+        <p class="testimonial-company">IT &amp; Support Outsourcing</p>
+        <p class="testimonial-role-title">HR &amp; Legal</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- PROOF SECTION -->
+<section class="proof-section" id="proof">
+  <div class="proof-inner">
+
+    <div class="proof-header reveal">
+      <h2 class="proof-heading">The numbers<br><em>don't lie</em></h2>
+      <p class="proof-sub">Screenshots from Google Search Console. Real clients, real growth, real timelines. This is what sustained SEO strategy looks like when you give it time and intent.</p>
+    </div>
+
+    <div class="proof-grid reveal">
+
+      <!-- Big one — full width -->
+      <div class="proof-card proof-card-wide">
+        <div class="proof-browser">
+          <div class="browser-dot"></div>
+          <div class="browser-dot"></div>
+          <div class="browser-dot"></div>
+          <div class="browser-bar">search.google.com/search-console · Performance</div>
+        </div>
+        <img class="proof-screenshot"
+             src="https://i.ibb.co/4gS96902/Screenshot-2026-05-26-142802.png"
+             alt="310K clicks, 9.61M impressions — Google Search Console">
+        <div class="proof-caption">
+          <div class="proof-caption-num">310K</div>
+          <div class="proof-caption-text"><strong>Total clicks · 9.61M impressions.</strong> This is the full picture of what three years of building SEO from scratch looks like. Joined as the first dedicated SEO hire. No playbook, no precedent. Built the strategy, the tooling, and the process — and watched the curve climb.</div>
+        </div>
+      </div>
+
+      <!-- Growth curve -->
+      <div class="proof-card">
+        <div class="proof-browser">
+          <div class="browser-dot"></div>
+          <div class="browser-dot"></div>
+          <div class="browser-dot"></div>
+          <div class="browser-bar">search.google.com/search-console · Performance</div>
+        </div>
+        <img class="proof-screenshot"
+             src="https://i.ibb.co/dJ2gHYGR/Screenshot-2026-05-26-142846.png"
+             alt="Growth from zero — Search Console upward curve">
+        <div class="proof-caption">
+          <div class="proof-caption-num">↗</div>
+          <div class="proof-caption-text"><strong>From flatline to upward curve.</strong> The left side of this graph is what zero organic presence looks like. The right side is what happens when you build with intent — keyword by keyword, page by page.</div>
+        </div>
+      </div>
+
+      <!-- 3 month performance -->
+      <div class="proof-card">
+        <div class="proof-browser">
+          <div class="browser-dot"></div>
+          <div class="browser-dot"></div>
+          <div class="browser-dot"></div>
+          <div class="browser-bar">search.google.com/search-console · 3 months</div>
+        </div>
+        <img class="proof-screenshot"
+             src="https://i.ibb.co/B5TgPh9C/Screenshot-2026-05-26-142828.png"
+             alt="3-month performance — 645 clicks, 40.7K impressions">
+        <div class="proof-caption">
+          <div class="proof-caption-num">40.7K</div>
+          <div class="proof-caption-text"><strong>Impressions in 3 months · 1.6% CTR.</strong> A newer brand finding its search footing. Consistent, upward-trending impressions — the foundation before the traffic spike.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="proof-note reveal">
+      <p>"Good SEO is invisible to the user and <strong>undeniable in the data</strong>. These graphs aren't vanity metrics — they're the result of technical decisions, content choices, and the patience to let compounding do its work."</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- CHAPTER 04 -->
+<div class="chapter" id="creative">
+  <span class="chapter-num">Chapter 04</span>
+  <span class="chapter-line"></span>
+  <span class="chapter-title">The creative side</span>
+</div>
+
+<!-- CREATIVE -->
+<section class="creative-section">
+  <div class="creative-header reveal">
+    <h2 class="creative-heading">Not just strategy.<br><em>Stories you can see.</em></h2>
+
+  </div>
+  <div class="creative-tiles reveal">
+
+    <div class="tile tile-wide">
+      <div>
+        <p class="tile-type">Brand Design</p>
+        <p class="tile-name">Visual identity for a youth wellbeing non-profit</p>
+        <p class="tile-desc">Canva-based brand system — social posts, report covers, event assets — aligned to a non-profit's voice.</p>
+      </div>
+      
+    </div>
+
+
+
+    <div class="tile">
+      <div>
+        <p class="tile-type">UX & Wireframes</p>
+        <p class="tile-name">Website wireframes</p>
+        <p class="tile-desc">User journeys & wireframes for a non-profit's full site revamp.</p>
+      </div>
+    </div>
+
+
+
+  </div>
+</section>
+
+<!-- CHAPTER 04.5 — CULLENS -->
+<section style="background: var(--paper-dark); padding: 3rem; border-top: 1px solid var(--border);" id="cullens">
+  <div style="max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 2rem;" class="reveal">
+    <div>
+      <p class="story-label">Irish Agri-Tourism Brand · Wicklow, Ireland</p>
+      <p style="font-family: var(--serif); font-size: 1.3rem; font-weight: 700; margin: 0.4rem 0 0.6rem;">Agri-tourism digital marketing &amp; tourism visibility</p>
+      <p style="font-size: 0.9rem; color: var(--muted); max-width: 560px; line-height: 1.8;">Developed the full digital strategy for a Wicklow-based agri-tourism brand — growing their international audience through content, SEO, and social. Every campaign started not with keywords, but with the feeling of being there.</p>
+    </div>
+    <div style="font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); line-height: 2.2; flex-shrink: 0;">
+      <div>Digital Strategy</div>
+      <div>Tourism Visibility</div>
+      <div>Content Creation</div>
+      <div>Audience Engagement</div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section class="research-section reveal">
+  <p class="story-label">Publications & research</p>
+  <h2 class="story-heading" style="margin-bottom: 0.5rem;">Where curiosity<br>met <em>rigour</em></h2>
+  <p class="story-body" style="max-width: 600px; margin-top: 0.5rem;">Because the best strategists don't just follow the algorithm — they study it.</p>
+  <div class="research-grid">
+    <a class="research-card" href="https://www.researchgate.net/publication/405388131_Success_Factors_in_Search_Engine_Optimization_A_Quantitative_Study_of_Technology_Firms'_Adaptability_to_Algorithm_Changes" target="_blank" style="text-decoration:none; color:inherit; display:block;">
+      <p class="research-year">PARC Conference 2026</p>
+      <h3 class="research-title">Success Factors in Search Engine Optimisation: Adaptability to Algorithm Changes in Technology Firms</h3>
+      <p class="research-venue">Original research — presented at PARC Conference, Dublin, 2026</p>
+      <p style="font-size:0.72rem; color:var(--accent); margin-top:0.75rem; font-family:var(--mono); letter-spacing:0.08em;">Read on ResearchGate ↗</p>
+    </a>
+    <a class="research-card" href="https://www.researchgate.net/publication/401123640_Blocking_And_Misbehaving_Online_Product_Reviewers_Using_Opinion_Mining" target="_blank" style="text-decoration:none; color:inherit; display:block;">
+      <p class="research-year">IJSART · 2019</p>
+      <h3 class="research-title">Blocking Misbehaving Online Product Reviewers Using Opinion Mining</h3>
+      <p class="research-venue">International Journal for Science and Advanced Research in Technology · Paper ID: IJSARTV5I531376</p>
+      <p style="font-size:0.72rem; color:var(--accent); margin-top:0.75rem; font-family:var(--mono); letter-spacing:0.08em;">Read on ResearchGate ↗</p>
+    </a>
+    <a class="research-card" href="https://www.researchgate.net/publication/405388438_Research_Poster_-_Success_Factors_in_Search_Engine_Optimization_Adaptability_to_Algorithm_Changes_in_Technology_Firms_-_Merin_Reji" target="_blank" style="text-decoration:none; color:inherit; display:block;">
+      <p class="research-year">Research Poster · 2026</p>
+      <h3 class="research-title">Research Poster — Success Factors in SEO: Adaptability to Algorithm Changes in Technology Firms</h3>
+      <p class="research-venue">Presented at PARC Conference, Dublin, 2026</p>
+      <p style="font-size:0.72rem; color:var(--accent); margin-top:0.75rem; font-family:var(--mono); letter-spacing:0.08em;">View Poster ↗</p>
+    </a>
+    <a class="research-card" href="https://www.researchgate.net/publication/405388335_DIGITAL_MARKETING_STRATEGY" target="_blank" style="text-decoration:none; color:inherit; display:block;">
+      <p class="research-year">Case Study</p>
+      <h3 class="research-title">Digital Marketing Strategy</h3>
+      <p class="research-venue">A deep-dive into digital marketing strategy across regulated and high-sensitivity industries — including healthcare and mental health & wellness — where audience-specific messaging, compliance awareness, and trust-building are not optional extras, but the entire brief.</p>
+      <p style="font-size:0.72rem; color:var(--accent); margin-top:0.75rem; font-family:var(--mono); letter-spacing:0.08em;">Read Case Study ↗</p>
+    </a>
+  </div>
+</section>
+
+
+<!-- TOOLS GROUPED -->
+<section class="tools-showcase" id="toolkit">
+  <div class="tools-showcase-inner">
+    <div class="tools-showcase-header">
+      <div>
+        <p class="story-label">My toolkit</p>
+        <h2 class="tools-showcase-heading">Tools, platforms &amp; tech</h2>
+        <div class="tools-heading-line"></div>
+      </div>
+      <p class="tools-showcase-sub">The stack I use to analyse, strategise, execute and measure growth across channels.</p>
+    </div>
+
+    <div class="toolkit-grid">
+      <div class="toolkit-card"><span class="toolkit-icon">⌕</span><div><h3>Analytics &amp; Insights</h3><p>GA4, Looker Studio, Search Console, Ahrefs, Screaming Frog</p></div></div>
+      <div class="toolkit-card"><span class="toolkit-icon">⚙</span><div><h3>SEO &amp; Technical</h3><p>Ahrefs, Semrush, Screaming Frog, Sitebulb, PageSpeed Insights, Schema</p></div></div>
+      <div class="toolkit-card"><span class="toolkit-icon">↗</span><div><h3>Performance Marketing</h3><p>Google Ads, Meta Ads, LinkedIn Ads, Campaign Manager, GA4</p></div></div>
+      <div class="toolkit-card"><span class="toolkit-icon">✉</span><div><h3>CRM &amp; Lifecycle</h3><p>HubSpot, Automation, Email Marketing, Segmentation, Lead Nurture</p></div></div>
+      <div class="toolkit-card"><span class="toolkit-icon">✎</span><div><h3>Content &amp; Optimisation</h3><p>Surfer SEO, Clearscope, Frase, ChatGPT, Canva, Copywriting</p></div></div>
+      <div class="toolkit-card"><span class="toolkit-icon">◎</span><div><h3>International SEO</h3><p>Hreflang, Multi-language, Geo-targeting, Localisation, International Search</p></div></div>
+      <div class="toolkit-card"><span class="toolkit-icon">◔</span><div><h3>Project &amp; Collaboration</h3><p>Asana, Notion, Trello, Slack, Docs, Sheets, Cross-functional sync</p></div></div>
+      <div class="toolkit-card"><span class="toolkit-icon">⌁</span><div><h3>Research &amp; Testing</h3><p>A/B Testing, CRO, Heatmaps, User Behaviour, Keyword Research</p></div></div>
+    </div>
+
+    <div class="toolkit-principles">
+      <div><span>◎</span><strong>Strategy first</strong><p>Data-backed decisions</p></div>
+      <div><span>☷</span><strong>Cross-functional</strong><p>Work across teams &amp; silos</p></div>
+      <div><span>♢</span><strong>Test &amp; learn</strong><p>Experiment, iterate, scale</p></div>
+      <div><span>◎</span><strong>Global mindset</strong><p>Multi-market, multi-language</p></div>
+      <div><span>↗</span><strong>Growth obsessed</strong><p>Impact over activity</p></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- CONTACT -->
+<!-- CHAPTER 05 -->
+<div class="chapter" id="book">
+  <span class="chapter-num">Chapter 05</span>
+  <span class="chapter-line"></span>
+  <span class="chapter-title">The one I wrote myself</span>
+</div>
+
+<!-- BOOK -->
+<section class="book-section">
+  <div class="book-inner reveal">
+    <div>
+      <div class="book-cover" style="padding:0; background:#000;">
+        <img src="https://i.ibb.co/v6s44kTp/Insta-Post-1.png"
+             alt="Certified Misfit by Merin Reji"
+             style="width:100%; height:100%; object-fit:cover; display:block;">
+      </div>
+    </div>
+    <div class="book-content">
+      <p class="book-section-label">The book</p>
+      <h2 class="book-heading">A reminder that<br>not fitting the mould<br>is a <em>feature</em></h2>
+      <p class="book-text"><em>Certified Misfit</em> is a book about identity, empowerment, and non-conformity. It's about the people who don't slot neatly into job descriptions, org charts, or social expectations — and why that's worth something.</p>
+      <p class="book-text">Writing it taught me what every good brand campaign needs: a clear point of view, a reader worth writing for, and the courage to say something that doesn't sound like everyone else. That's the same skill I bring to every content strategy I build.</p>
+      <div class="book-pullquote">
+        <p>"The people who don't fit the mould are often the most interesting ones in the room."</p>
+      </div>
+      <a href="https://www.amazon.in/Certified-Misfit-Merin-Reji/dp/9360454028" class="book-link" target="_blank">Read it on Amazon →</a>
+      <a href="https://www.goodreads.com/book/show/244509392-certified-misfit" target="_blank" rel="noopener" class="book-link" style="margin-left:1.5rem;">Goodreads Review →</a>
+    </div>
+  </div>
+</section>
+
+<!-- BEYOND THE BRIEF / NATURE -->
+<section style="padding: 5rem 3rem; max-width: 1100px; margin: 0 auto;" class="reveal">
+  <div style="margin-top: 0; padding-top: 0; border-top: 1px solid var(--border); padding-top: 2.5rem;">
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+      <div>
+        <p class="story-label">Beyond the brief</p>
+        <h3 style="font-family: var(--serif); font-size: 1.3rem; font-weight: 700; margin-bottom: 0.75rem;">Storyteller at <em style="font-style:italic; color:var(--accent);">heart</em></h3>
+        <p style="font-size: 0.95rem; color: var(--muted); line-height: 1.9; font-weight: 300;">I believe the best marketing is just good storytelling with a strategy behind it. Away from screens, I write — it's where my sharpest ideas come from. I've turned that instinct into a published book, a conference paper, and campaigns that people actually remember.</p>
+      </div>
+      <div>
+        <p class="story-label">Rooted in nature</p>
+        <h3 style="font-family: var(--serif); font-size: 1.3rem; font-weight: 700; margin-bottom: 0.75rem;">Nature is where I <em style="font-style:italic; color:var(--accent);">reset</em></h3>
+        <p style="font-size: 0.95rem; color: var(--muted); line-height: 1.9; font-weight: 300;">When the data gets loud and the briefs pile up, I go outside. Nature unclutters me — it slows the thinking down so the good ideas can surface. Living in Ireland has been a gift that way. The hills, the coastline, the quiet. It comes back into everything I make.</p>
+      </div>
+    </div>
+
+    <!-- Nature photo tiles -->
+    <div style="display: grid; grid-template-columns: repeat(9, 1fr); gap: 6px; margin-top: 1.5rem;">
+      <div style="aspect-ratio:1; overflow:hidden; grid-column: span 1;">
+        <img src="https://i.ibb.co/jkQcPMN6/Whats-App-Image-2026-05-28-at-12-55-31-PM-3.jpg" alt="Nature" style="width:100%; height:100%; object-fit:cover; transition: transform 0.4s; display:block;" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'">
+      </div>
+      <div style="aspect-ratio:1; overflow:hidden; grid-column: span 1;">
+        <img src="https://i.ibb.co/Vcsngf14/Whats-App-Image-2026-05-28-at-12-55-31-PM-2.jpg" alt="Nature" style="width:100%; height:100%; object-fit:cover; transition: transform 0.4s; display:block;" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'">
+      </div>
+      <div style="aspect-ratio:1; overflow:hidden; grid-column: span 1;">
+        <img src="https://i.ibb.co/tTFjT97c/Whats-App-Image-2026-05-28-at-12-13-40-AM-7.jpg" alt="Nature" style="width:100%; height:100%; object-fit:cover; transition: transform 0.4s; display:block;" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'">
+      </div>
+      <div style="aspect-ratio:1; overflow:hidden; grid-column: span 1;">
+        <img src="https://i.ibb.co/pj7rvN2y/Whats-App-Image-2026-05-28-at-12-55-31-PM.jpg" alt="Nature" style="width:100%; height:100%; object-fit:cover; transition: transform 0.4s; display:block;" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'">
+      </div>
+      <div style="aspect-ratio:1; overflow:hidden; grid-column: span 1;">
+        <img src="https://i.ibb.co/v4QT7JqX/Whats-App-Image-2026-05-28-at-12-55-30-PM-4.jpg" alt="Nature" style="width:100%; height:100%; object-fit:cover; transition: transform 0.4s; display:block;" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'">
+      </div>
+      <div style="aspect-ratio:1; overflow:hidden; grid-column: span 1;">
+        <img src="https://i.ibb.co/s9mDvz0J/Whats-App-Image-2026-05-28-at-12-55-30-PM-3.jpg" alt="Nature" style="width:100%; height:100%; object-fit:cover; transition: transform 0.4s; display:block;" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'">
+      </div>
+      <div style="aspect-ratio:1; overflow:hidden; grid-column: span 1;">
+        <img src="https://i.ibb.co/PzzpbRXx/Whats-App-Image-2026-05-28-at-12-13-40-AM-1.jpg" alt="Nature" style="width:100%; height:100%; object-fit:cover; transition: transform 0.4s; display:block;" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'">
+      </div>
+      <div style="aspect-ratio:1; overflow:hidden; grid-column: span 1;">
+        <img src="https://i.ibb.co/xtrXGZJN/Whats-App-Image-2026-05-28-at-12-55-30-PM-1.jpg" alt="Nature" style="width:100%; height:100%; object-fit:cover; transition: transform 0.4s; display:block;" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'">
+      </div>
+      <div style="aspect-ratio:1; overflow:hidden; grid-column: span 1;">
+        <img src="https://i.ibb.co/Zpd2BCTK/Whats-App-Image-2026-05-28-at-12-55-30-PM.jpg" alt="Nature" style="width:100%; height:100%; object-fit:cover; transition: transform 0.4s; display:block;" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'">
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="contact-section" id="contact">
+  <div class="contact-bg"><div class="contact-bg-text">hi</div></div>
+  <div class="contact-inner">
+    <p class="contact-label">Chapter 06 · Let's write something new</p>
+    <h2 class="contact-heading">Ready to tell<br>your <em>story</em>?</h2>
+    <p class="contact-sub">I'm open to senior digital marketing, SEO strategy, and growth roles in Dublin and remote. If you're building something interesting and need someone who thinks in stories as much as data — let's talk.</p>
+    <div class="contact-links">
+      <a href="mailto:merinreji14@gmail.com" class="contact-link contact-link-primary">merinreji14@gmail.com</a>
+      <a href="https://www.linkedin.com/in/merin-reji" class="contact-link contact-link-ghost" target="_blank">LinkedIn ↗</a>
+    </div>
+    <p class="contact-footer">Based in Dublin · Eligible to work in Ireland · Fully remote-capable</p>
+  </div>
+</section>
+
+<script>
+  // Animate discipline bars on load
+  setTimeout(() => {
+    document.querySelectorAll('.discipline-bar').forEach(bar => bar.classList.add('animate'));
+  }, 1000);
+
+  // Animate stat counters
+  function animateCounter(el) {
+    const target = parseInt(el.dataset.count);
+    const suffix = el.dataset.suffix;
+    const duration = 1600;
+    const startTime = performance.now();
+    function update(currentTime) {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+      const current = Math.round(ease * target);
+      el.innerHTML = current + '<span>' + suffix + '</span>';
+      if (progress < 1) requestAnimationFrame(update);
+    }
+    requestAnimationFrame(update);
+  }
+  const counterObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        document.querySelectorAll('[data-count]').forEach(animateCounter);
+        counterObserver.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
+  const statsEl = document.querySelector('.hero-stats');
+  if (statsEl) counterObserver.observe(statsEl);
+
+  // Custom cursor
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+  function animateCursor() {
+    cursor.style.left = mx + 'px'; cursor.style.top = my + 'px';
+    rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12;
+    ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+    requestAnimationFrame(animateCursor);
+  }
+  animateCursor();
+
+  document.querySelectorAll('a, button, .case-card, .tile').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cursor.style.width = '6px'; cursor.style.height = '6px';
+      ring.style.width = '50px'; ring.style.height = '50px'; ring.style.opacity = '0.8';
+    });
+    el.addEventListener('mouseleave', () => {
+      cursor.style.width = '10px'; cursor.style.height = '10px';
+      ring.style.width = '36px'; ring.style.height = '36px'; ring.style.opacity = '0.5';
+    });
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal, .timeline-item');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Case study popup summaries
+  const caseModal = document.getElementById('caseModal');
+  const caseModalClose = document.getElementById('caseModalClose');
+  const caseModalTitle = document.getElementById('caseModalTitle');
+  const caseModalKicker = document.getElementById('caseModalKicker');
+  const caseModalBody = document.getElementById('caseModalBody');
+
+  function openCaseModal(card) {
+    caseModalTitle.textContent = card.dataset.caseTitle || 'Case study';
+    caseModalKicker.textContent = card.dataset.caseKicker || '';
+    caseModalBody.textContent = card.dataset.caseBody || '';
+    caseModal.classList.add('active');
+    caseModal.setAttribute('aria-hidden', 'false');
+    caseModalClose.focus();
+  }
+
+  function closeCaseModal() {
+    caseModal.classList.remove('active');
+    caseModal.setAttribute('aria-hidden', 'true');
+  }
+
+  document.querySelectorAll('.case-card[data-case-title]').forEach(card => {
+    card.addEventListener('click', () => openCaseModal(card));
+  });
+  caseModalClose.addEventListener('click', closeCaseModal);
+  caseModal.addEventListener('click', event => {
+    if (event.target === caseModal) closeCaseModal();
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && caseModal.classList.contains('active')) closeCaseModal();
+  });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mental Health & Psychotherapy — Case Study · Merin Reji</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --ink: #0f0e0d;
+    --paper: #f5f0e8;
+    --paper-dark: #ede7d9;
+    --accent: #c94a2b;
+    --accent-soft: #f0e0da;
+    --muted: #7a7060;
+    --border: rgba(15,14,13,0.12);
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'DM Sans', sans-serif;
+    --mono: 'DM Mono', monospace;
+    --health: #1a2a3a;
+    --health-mid: #2a4a6a;
+    --health-accent: #5b9bd5;
+    --health-green: #6ab187;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 1.25rem 3rem;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(245,240,232,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-back {
+    display: flex; align-items: center; gap: 0.5rem;
+    font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--muted); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-back:hover { color: var(--ink); }
+  .nav-label { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.12em; color: var(--accent); text-transform: uppercase; }
+
+  /* HERO */
+  .cs-hero {
+    min-height: 90vh;
+    background: var(--health);
+    display: grid; grid-template-columns: 1fr 1fr;
+    position: relative; overflow: hidden; padding-top: 5rem;
+  }
+  .cs-hero-left {
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 5rem 4rem 5rem 3rem; position: relative; z-index: 2;
+  }
+  .cs-eyebrow {
+    font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--health-accent); margin-bottom: 1.5rem;
+    opacity: 0; animation: fadeUp 0.8s 0.3s forwards;
+  }
+  .cs-title {
+    font-family: var(--serif); font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700; line-height: 1.05; color: #f5f0e8; margin-bottom: 1.5rem;
+    opacity: 0; animation: fadeUp 0.9s 0.5s forwards;
+  }
+  .cs-title em { font-style: italic; color: var(--health-accent); display: block; }
+  .cs-subtitle {
+    font-size: 1rem; color: rgba(245,240,232,0.6); font-weight: 300;
+    line-height: 1.8; max-width: 420px; margin-bottom: 2.5rem;
+    opacity: 0; animation: fadeUp 0.9s 0.7s forwards;
+  }
+  .cs-tags {
+    display: flex; flex-wrap: wrap; gap: 0.5rem;
+    opacity: 0; animation: fadeUp 0.9s 0.9s forwards;
+  }
+  .cs-tag {
+    font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 0.35rem 0.8rem;
+    border: 1px solid rgba(245,240,232,0.2); color: rgba(245,240,232,0.6);
+  }
+  .cs-hero-right {
+    position: relative; display: flex; align-items: flex-end;
+    padding: 4rem 3rem; opacity: 0; animation: fadeIn 1.2s 1s forwards;
+  }
+  .cs-metrics {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1.5px; width: 100%; background: rgba(245,240,232,0.08);
+  }
+  .cs-metric {
+    background: rgba(26,42,58,0.85); backdrop-filter: blur(4px);
+    padding: 1.75rem 1.5rem; border: 1px solid rgba(245,240,232,0.06);
+  }
+  .cs-metric-num {
+    font-family: var(--serif); font-size: 2.4rem; font-weight: 700;
+    color: #f5f0e8; line-height: 1;
+  }
+  .cs-metric-num span { color: var(--health-accent); }
+  .cs-metric-label {
+    font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase;
+    color: rgba(245,240,232,0.45); margin-top: 0.4rem;
+  }
+  .cs-confidential {
+    position: absolute; top: 6rem; right: 3rem;
+    font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.14em;
+    text-transform: uppercase; color: rgba(245,240,232,0.2);
+    border: 1px solid rgba(245,240,232,0.1); padding: 0.3rem 0.7rem;
+  }
+
+  /* OVERVIEW */
+  .cs-overview { background: var(--paper-dark); border-bottom: 1px solid var(--border); padding: 3rem; }
+  .cs-overview-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 2rem; max-width: 1100px; margin: 0 auto; }
+  .cs-overview-label { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.4rem; }
+  .cs-overview-value { font-size: 0.9rem; font-weight: 500; color: var(--ink); line-height: 1.4; }
+
+  /* SECTIONS */
+  .cs-section { padding: 5rem 3rem; max-width: 1100px; margin: 0 auto; }
+  .cs-section-label { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
+  .cs-section-heading { font-family: var(--serif); font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 700; line-height: 1.2; margin-bottom: 2rem; }
+  .cs-section-heading em { font-style: italic; color: var(--accent); }
+  .cs-prose { font-size: 1rem; color: var(--muted); line-height: 1.9; font-weight: 300; max-width: 720px; }
+  .cs-prose p + p { margin-top: 1.1rem; }
+  .cs-prose strong { color: var(--ink); font-weight: 500; }
+
+  /* ALERT BOX */
+  .cs-alert {
+    background: var(--accent-soft); border-left: 3px solid var(--accent);
+    padding: 1.25rem 1.5rem; margin-top: 2rem; max-width: 720px;
+  }
+  .cs-alert p { font-size: 0.92rem; color: var(--ink); line-height: 1.7; font-weight: 400; }
+  .cs-alert strong { font-weight: 600; }
+
+  /* BENCHMARK TABLE */
+  .cs-table { width: 100%; border-collapse: collapse; margin-top: 2.5rem; }
+  .cs-table th {
+    font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--muted); text-align: left;
+    padding: 0.75rem 1rem; border-bottom: 2px solid var(--border);
+  }
+  .cs-table td { padding: 1rem; font-size: 0.88rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .cs-table tr:hover td { background: var(--accent-soft); }
+  .cs-table .org { font-weight: 500; color: var(--accent); }
+  .cs-table .good { color: #3a7a50; font-weight: 500; }
+  .cs-table .bad { color: var(--accent); font-weight: 500; }
+
+  /* KEYWORD GRID */
+  .cs-keywords { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 2.5rem; }
+  .cs-keyword {
+    background: var(--paper-dark); border: 1px solid var(--border);
+    padding: 1.25rem 1.5rem; display: flex; justify-content: space-between;
+    align-items: center; transition: border-color 0.2s, background 0.2s;
+  }
+  .cs-keyword:hover { border-color: var(--accent); background: var(--accent-soft); }
+  .cs-keyword-term { font-size: 0.9rem; font-weight: 500; }
+  .cs-keyword-meta { text-align: right; }
+  .cs-keyword-vol { font-family: var(--mono); font-size: 0.75rem; color: var(--accent); }
+  .cs-keyword-diff { font-size: 0.7rem; color: var(--muted); margin-top: 0.15rem; }
+  .cs-keyword-priority { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 0.15rem; }
+  .cs-keyword-priority.high { color: var(--accent); }
+  .cs-keyword-priority.medium { color: #e8a020; }
+
+  /* DARK SECTION */
+  .cs-dark { background: var(--health); padding: 5rem 3rem; color: var(--paper); }
+  .cs-dark-inner { max-width: 1100px; margin: 0 auto; }
+  .cs-dark .cs-section-label { color: var(--health-accent); }
+  .cs-dark .cs-section-heading { color: var(--paper); }
+  .cs-dark .cs-section-heading em { color: var(--health-accent); }
+
+  /* SWOT */
+  .cs-swot { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5px; background: rgba(245,240,232,0.08); margin-top: 2.5rem; }
+  .cs-swot-cell { padding: 2rem; }
+  .cs-swot-cell:nth-child(1) { background: rgba(106,177,135,0.08); }
+  .cs-swot-cell:nth-child(2) { background: rgba(201,74,43,0.08); }
+  .cs-swot-cell:nth-child(3) { background: rgba(91,155,213,0.08); }
+  .cs-swot-cell:nth-child(4) { background: rgba(100,100,100,0.06); }
+  .cs-swot-label { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 1rem; }
+  .cs-swot-cell:nth-child(1) .cs-swot-label { color: var(--health-green); }
+  .cs-swot-cell:nth-child(2) .cs-swot-label { color: var(--accent); }
+  .cs-swot-cell:nth-child(3) .cs-swot-label { color: var(--health-accent); }
+  .cs-swot-cell:nth-child(4) .cs-swot-label { color: rgba(245,240,232,0.4); }
+  .cs-swot-list { list-style: none; }
+  .cs-swot-list li { font-size: 0.85rem; color: rgba(245,240,232,0.65); line-height: 1.6; padding: 0.3rem 0; border-bottom: 1px solid rgba(245,240,232,0.05); font-weight: 300; }
+  .cs-swot-list li::before { content: '▸ '; opacity: 0.5; }
+
+  /* FINDINGS GRID */
+  .cs-findings { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; background: var(--border); margin-top: 2.5rem; border: 1px solid var(--border); }
+  .cs-finding { background: var(--paper); padding: 2rem; transition: background 0.2s; }
+  .cs-finding:hover { background: var(--accent-soft); }
+  .cs-finding-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
+  .cs-finding-title { font-family: var(--serif); font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .cs-finding-text { font-size: 0.85rem; color: var(--muted); line-height: 1.7; font-weight: 300; }
+
+  /* STRATEGY PHASES */
+  .cs-phases { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5px; background: rgba(245,240,232,0.08); margin-top: 2.5rem; }
+  .cs-phase { background: rgba(26,42,58,0.7); padding: 2rem; border: 1px solid rgba(245,240,232,0.06); transition: background 0.2s; }
+  .cs-phase:hover { background: rgba(91,155,213,0.1); }
+  .cs-phase-num { font-family: var(--serif); font-size: 3rem; font-weight: 700; color: rgba(245,240,232,0.06); line-height: 1; margin-bottom: 0.5rem; }
+  .cs-phase-title { font-family: var(--serif); font-size: 1rem; font-weight: 700; color: var(--paper); margin-bottom: 0.75rem; line-height: 1.3; }
+  .cs-phase-title em { font-style: italic; color: var(--health-accent); }
+  .cs-phase-text { font-size: 0.8rem; color: rgba(245,240,232,0.5); line-height: 1.7; font-weight: 300; }
+
+  /* PERSONAS */
+  .cs-personas { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2.5rem; }
+  .cs-persona { background: var(--paper-dark); border: 1px solid var(--border); padding: 2rem; transition: border-color 0.2s, background 0.2s; }
+  .cs-persona:hover { border-color: var(--accent); background: var(--accent-soft); }
+  .cs-persona-name { font-family: var(--serif); font-size: 1.25rem; font-weight: 700; margin-bottom: 0.25rem; }
+  .cs-persona-profile { font-size: 0.75rem; color: var(--accent); font-family: var(--mono); letter-spacing: 0.06em; margin-bottom: 1rem; }
+  .cs-persona-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .cs-persona-item-label { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.25rem; }
+  .cs-persona-item-text { font-size: 0.82rem; color: var(--ink); line-height: 1.6; }
+
+  /* AIDA */
+  .cs-aida { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5px; background: var(--border); margin-top: 2.5rem; }
+  .cs-aida-cell { background: var(--paper); padding: 1.75rem; transition: background 0.2s; }
+  .cs-aida-cell:hover { background: var(--accent-soft); }
+  .cs-aida-letter { font-family: var(--serif); font-size: 3rem; font-weight: 700; color: var(--border); line-height: 1; margin-bottom: 0.5rem; }
+  .cs-aida-stage { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
+  .cs-aida-text { font-size: 0.82rem; color: var(--muted); line-height: 1.7; font-weight: 300; }
+  .cs-aida-channel { font-family: var(--mono); font-size: 0.65rem; color: var(--muted); margin-top: 0.75rem; letter-spacing: 0.06em; }
+
+  /* KPI TABLE DARK */
+  .cs-kpi-table { width: 100%; border-collapse: collapse; margin-top: 2.5rem; }
+  .cs-kpi-table th { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(245,240,232,0.4); text-align: left; padding: 0.75rem 1rem; border-bottom: 1px solid rgba(245,240,232,0.08); }
+  .cs-kpi-table td { padding: 1rem; font-size: 0.88rem; color: rgba(245,240,232,0.65); font-weight: 300; border-bottom: 1px solid rgba(245,240,232,0.05); }
+  .cs-kpi-table td:first-child { font-weight: 500; color: var(--paper); }
+  .cs-kpi-table td.target { color: var(--health-accent); font-weight: 500; }
+
+  /* CONTENT CALENDAR */
+  .cs-calendar { width: 100%; border-collapse: collapse; margin-top: 2.5rem; }
+  .cs-calendar th { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-align: left; padding: 0.75rem 1rem; border-bottom: 2px solid var(--border); background: var(--paper-dark); }
+  .cs-calendar td { padding: 0.9rem 1rem; font-size: 0.82rem; border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.5; color: var(--muted); }
+  .cs-calendar td:first-child { font-weight: 600; color: var(--ink); font-family: var(--mono); font-size: 0.72rem; }
+  .cs-calendar tr:hover td { background: var(--accent-soft); }
+
+  /* PULLQUOTE */
+  .cs-pullquote { padding: 5rem 3rem; background: var(--health-mid); text-align: center; }
+  .cs-pullquote blockquote { font-family: var(--serif); font-size: clamp(1.4rem, 2.5vw, 2rem); font-style: italic; font-weight: 400; color: rgba(245,240,232,0.85); line-height: 1.6; max-width: 800px; margin: 0 auto; }
+  .cs-pullquote blockquote em { color: var(--health-accent); font-style: normal; }
+  .cs-pullquote cite { display: block; margin-top: 1.5rem; font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(245,240,232,0.3); }
+
+  /* FOOTER */
+  .cs-footer { background: var(--ink); padding: 4rem 3rem; text-align: center; }
+  .cs-footer p { font-size: 0.85rem; color: rgba(245,240,232,0.3); margin-bottom: 1.5rem; }
+  .cs-back-btn { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--accent); color: #fff; padding: 0.9rem 2rem; text-decoration: none; font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500; transition: background 0.2s; }
+  .cs-back-btn:hover { background: #a03820; }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-back" href="index.html">← Back to Portfolio</a>
+  <span class="nav-label">Case Study · Confidential</span>
+</nav>
+
+<!-- HERO -->
+<section class="cs-hero">
+  <div class="cs-hero-left">
+    <p class="cs-eyebrow">Case Study · Healthcare · Mental Wellness · Dublin · 2025</p>
+    <h1 class="cs-title">Mental Health &<br><em>Psychotherapy Services</em></h1>
+    <p class="cs-subtitle">A full digital marketing strategy and SEO audit for a Dublin-based therapy and counselling practice — a sector where trust is the product, and visibility is the first step to care.</p>
+    <div class="cs-tags">
+      <span class="cs-tag">Technical SEO</span>
+      <span class="cs-tag">Keyword Strategy</span>
+      <span class="cs-tag">Social Media</span>
+      <span class="cs-tag">Competitor Audit</span>
+      <span class="cs-tag">E-E-A-T</span>
+      <span class="cs-tag">Content Strategy</span>
+      <span class="cs-tag">Healthcare</span>
+    </div>
+  </div>
+  <div class="cs-hero-right">
+    <div class="cs-metrics">
+      <div class="cs-metric">
+        <div class="cs-metric-num">20<span>%</span></div>
+        <div class="cs-metric-label">Target organic traffic increase</div>
+      </div>
+      <div class="cs-metric">
+        <div class="cs-metric-num">10<span>+</span></div>
+        <div class="cs-metric-label">Target keyword rankings</div>
+      </div>
+      <div class="cs-metric">
+        <div class="cs-metric-num">163<span>×</span></div>
+        <div class="cs-metric-label">Backlink gap vs. top competitor</div>
+      </div>
+      <div class="cs-metric">
+        <div class="cs-metric-num">6<span>mo</span></div>
+        <div class="cs-metric-label">Implementation timeline</div>
+      </div>
+    </div>
+  </div>
+  <span class="cs-confidential">Client identity withheld · Academic use only</span>
+</section>
+
+<!-- OVERVIEW STRIP -->
+<div class="cs-overview">
+  <div class="cs-overview-grid">
+    <div><p class="cs-overview-label">Sector</p><p class="cs-overview-value">Healthcare / Mental Wellness</p></div>
+    <div><p class="cs-overview-label">Market</p><p class="cs-overview-value">Dublin, Ireland</p></div>
+    <div><p class="cs-overview-label">Focus</p><p class="cs-overview-value">SEO · Social · Competitor Intelligence</p></div>
+    <div><p class="cs-overview-label">Tools Used</p><p class="cs-overview-value">SEMrush · Moz · Ahrefs · Screaming Frog</p></div>
+    <div><p class="cs-overview-label">Scope</p><p class="cs-overview-value">Full audit + 6-month growth roadmap</p></div>
+  </div>
+</div>
+
+<!-- EXECUTIVE SUMMARY -->
+<section class="cs-section reveal">
+  <p class="cs-section-label">01 · Executive Summary</p>
+  <h2 class="cs-section-heading">A practice with<br>real strengths — and a<br><em>digital presence that wasn't showing them</em></h2>
+  <div class="cs-prose">
+    <p>A Dublin-based psychotherapy and counselling practice offering individual, couples, family, and workplace wellness services. Skilled therapist network. Online counselling capability. A genuinely compassionate, client-centred offering. And a digital footprint that was effectively invisible.</p>
+    <p>The audit revealed a Domain Authority of just 11 — against 26 for the leading competitor. Only 7 ranking keywords. A backlink profile <strong>163 times weaker</strong> than the top competitor. No active social media presence. Zero top-10 rankings for any high-value therapy search in Ireland.</p>
+    <p>In a sector where someone searching "therapy Dublin" at 11pm is often in genuine need, <strong>not being found is not a neutral outcome</strong>. The strategy I developed focused on closing that gap — technically, editorially, and socially — within six months.</p>
+  </div>
+  <div class="cs-alert">
+    <p><strong>Critical gap:</strong> The Organisation ranked for only 7 keywords versus 571 for Competitor A. Its backlink profile was 163× weaker. No top-10 rankings for any high-value therapy keyword — while two direct competitors ran active, well-optimised digital presences targeting the same audience.</p>
+  </div>
+
+  <div class="cs-findings" style="margin-top:3rem;">
+    <div class="cs-finding">
+      <div class="cs-finding-icon">🔍</div>
+      <p class="cs-finding-title">DA of 11 vs 26</p>
+      <p class="cs-finding-text">Domain Authority significantly below market leaders. Every new page published starts with a trust deficit that takes months of link-building to close.</p>
+    </div>
+    <div class="cs-finding">
+      <div class="cs-finding-icon">🔗</div>
+      <p class="cs-finding-title">105 vs 17,200 backlinks</p>
+      <p class="cs-finding-text">The organisation's inbound link count was 163× weaker than Competitor A. Without authority, even strong content struggles to rank.</p>
+    </div>
+    <div class="cs-finding">
+      <div class="cs-finding-icon">📱</div>
+      <p class="cs-finding-title">No active social media</p>
+      <p class="cs-finding-text">Profiles existed on Facebook and Instagram but were inactive — while both competitors maintained consistent, high-engagement presences across the same platforms.</p>
+    </div>
+    <div class="cs-finding">
+      <div class="cs-finding-icon">⚡</div>
+      <p class="cs-finding-title">Technical SEO issues</p>
+      <p class="cs-finding-text">Poor mobile page speed, broken 404 links, duplicate meta titles, missing schema markup, and incomplete GDPR compliance — all reducing search visibility.</p>
+    </div>
+    <div class="cs-finding">
+      <div class="cs-finding-icon">📝</div>
+      <p class="cs-finding-title">No content programme</p>
+      <p class="cs-finding-text">No blog, no FAQ pages, no resource guides. Competitors were capturing informational search intent — the top of the funnel where trust is first built.</p>
+    </div>
+    <div class="cs-finding">
+      <div class="cs-finding-icon">🌱</div>
+      <p class="cs-finding-title">Strong upside potential</p>
+      <p class="cs-finding-text">Rising mental health awareness, post-pandemic destigmatisation, and growing demand especially among 18–40s — the market was growing into a gap the practice could own.</p>
+    </div>
+  </div>
+</section>
+
+<!-- COMPETITOR BENCHMARK — DARK -->
+<section class="cs-dark reveal">
+  <div class="cs-dark-inner">
+    <p class="cs-section-label">02 · Competitor Benchmark</p>
+    <h2 class="cs-section-heading">Where the<br><em>gaps were</em></h2>
+    <table class="cs-kpi-table">
+      <thead>
+        <tr>
+          <th>Metric</th>
+          <th>The Organisation</th>
+          <th>Competitor A</th>
+          <th>Competitor B</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Domain Authority</td><td class="bad" style="color:var(--accent)">11</td><td class="target">26</td><td>16</td></tr>
+        <tr><td>Ranking Keywords</td><td class="bad" style="color:var(--accent)">7</td><td class="target">571</td><td>28</td></tr>
+        <tr><td>Inbound Links</td><td class="bad" style="color:var(--accent)">105</td><td class="target">17,200</td><td>920</td></tr>
+        <tr><td>Referring Domains</td><td class="bad" style="color:var(--accent)">37</td><td class="target">550</td><td>207</td></tr>
+        <tr><td>New Links (60 days)</td><td>2</td><td class="target">23</td><td>9</td></tr>
+        <tr><td>Active Paid Ads</td><td class="bad" style="color:var(--accent)">None</td><td class="target">Yes</td><td>Yes</td></tr>
+        <tr><td>Social Media</td><td class="bad" style="color:var(--accent)">Inactive</td><td class="target">Active — strong</td><td>Active</td></tr>
+        <tr><td>Schema Markup</td><td class="bad" style="color:var(--accent)">Missing</td><td class="target">Present</td><td>Partial</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- KEYWORD STRATEGY -->
+<section class="cs-section reveal">
+  <p class="cs-section-label">03 · Keyword Strategy</p>
+  <h2 class="cs-section-heading">10 keywords.<br><em>10 doors</em> to open.</h2>
+  <div class="cs-prose">
+    <p>The Organisation held no top-10 rankings for any high-value therapy search. The following keywords were identified through SEMrush and manual research — prioritised by intent, volume, and achievability against the current baseline.</p>
+  </div>
+  <div class="cs-keywords">
+    <div class="cs-keyword">
+      <span class="cs-keyword-term">counselling services Dublin</span>
+      <div class="cs-keyword-meta">
+        <div class="cs-keyword-vol">140 / mo</div>
+        <div class="cs-keyword-diff">Medium difficulty</div>
+        <div class="cs-keyword-priority high">HIGH</div>
+      </div>
+    </div>
+    <div class="cs-keyword">
+      <span class="cs-keyword-term">therapy for anxiety Dublin</span>
+      <div class="cs-keyword-meta">
+        <div class="cs-keyword-vol">70 / mo</div>
+        <div class="cs-keyword-diff">High difficulty</div>
+        <div class="cs-keyword-priority high">HIGH</div>
+      </div>
+    </div>
+    <div class="cs-keyword">
+      <span class="cs-keyword-term">mental health therapy Dublin</span>
+      <div class="cs-keyword-meta">
+        <div class="cs-keyword-vol">90 / mo</div>
+        <div class="cs-keyword-diff">Med-High difficulty</div>
+        <div class="cs-keyword-priority high">HIGH</div>
+      </div>
+    </div>
+    <div class="cs-keyword">
+      <span class="cs-keyword-term">couples therapy Dublin</span>
+      <div class="cs-keyword-meta">
+        <div class="cs-keyword-vol">50 / mo</div>
+        <div class="cs-keyword-diff">Med-High difficulty</div>
+        <div class="cs-keyword-priority high">HIGH</div>
+      </div>
+    </div>
+    <div class="cs-keyword">
+      <span class="cs-keyword-term">online therapy Dublin</span>
+      <div class="cs-keyword-meta">
+        <div class="cs-keyword-vol">50 / mo</div>
+        <div class="cs-keyword-diff">Medium difficulty</div>
+        <div class="cs-keyword-priority high">HIGH</div>
+      </div>
+    </div>
+    <div class="cs-keyword">
+      <span class="cs-keyword-term">CBT therapy Dublin</span>
+      <div class="cs-keyword-meta">
+        <div class="cs-keyword-vol">20 / mo</div>
+        <div class="cs-keyword-diff">Medium difficulty</div>
+        <div class="cs-keyword-priority medium">MEDIUM</div>
+      </div>
+    </div>
+    <div class="cs-keyword">
+      <span class="cs-keyword-term">family therapy Dublin</span>
+      <div class="cs-keyword-meta">
+        <div class="cs-keyword-vol">30 / mo</div>
+        <div class="cs-keyword-diff">Low-Med difficulty</div>
+        <div class="cs-keyword-priority medium">MEDIUM</div>
+      </div>
+    </div>
+    <div class="cs-keyword">
+      <span class="cs-keyword-term">workplace wellness programmes Dublin</span>
+      <div class="cs-keyword-meta">
+        <div class="cs-keyword-vol">20 / mo</div>
+        <div class="cs-keyword-diff">Low difficulty</div>
+        <div class="cs-keyword-priority medium">MEDIUM</div>
+      </div>
+    </div>
+    <div class="cs-keyword">
+      <span class="cs-keyword-term">relationship counselling Dublin</span>
+      <div class="cs-keyword-meta">
+        <div class="cs-keyword-vol">40 / mo</div>
+        <div class="cs-keyword-diff">Medium difficulty</div>
+        <div class="cs-keyword-priority medium">MEDIUM</div>
+      </div>
+    </div>
+    <div class="cs-keyword">
+      <span class="cs-keyword-term">individual therapy Dublin</span>
+      <div class="cs-keyword-meta">
+        <div class="cs-keyword-vol">10 / mo</div>
+        <div class="cs-keyword-diff">Low difficulty</div>
+        <div class="cs-keyword-priority medium">MEDIUM</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SWOT — DARK -->
+<section class="cs-dark reveal">
+  <div class="cs-dark-inner">
+    <p class="cs-section-label">04 · SWOT Analysis</p>
+    <h2 class="cs-section-heading">An honest look at<br><em>where things stood</em></h2>
+    <div class="cs-swot">
+      <div class="cs-swot-cell">
+        <p class="cs-swot-label">Strengths</p>
+        <ul class="cs-swot-list">
+          <li>Strong therapist network and personalised service</li>
+          <li>Diverse, client-centred therapy modalities</li>
+          <li>Online counselling capability already in place</li>
+          <li>Well-defined niche and established brand name</li>
+        </ul>
+      </div>
+      <div class="cs-swot-cell">
+        <p class="cs-swot-label">Weaknesses</p>
+        <ul class="cs-swot-list">
+          <li>Very low Domain Authority (DA 11)</li>
+          <li>Minimal backlink profile (105 links)</li>
+          <li>No top-10 keyword rankings</li>
+          <li>Limited social media presence</li>
+          <li>Slow page speed on mobile</li>
+        </ul>
+      </div>
+      <div class="cs-swot-cell">
+        <p class="cs-swot-label">Opportunities</p>
+        <ul class="cs-swot-list">
+          <li>Growing mental health awareness and demand post-pandemic</li>
+          <li>Corporate and workplace wellness programmes</li>
+          <li>Underserved long-tail keyword opportunities</li>
+          <li>International and expat online therapy market</li>
+        </ul>
+      </div>
+      <div class="cs-swot-cell">
+        <p class="cs-swot-label">Threats</p>
+        <ul class="cs-swot-list">
+          <li>Dominant competitors with established SEO authority</li>
+          <li>Regulatory changes — accreditation and data privacy</li>
+          <li>Increasing teletherapy platform competition</li>
+          <li>Reputational risk from unmanaged reviews</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRATEGY — PHASES -->
+<section class="cs-dark reveal" style="background:#0f1a26; border-top:1px solid rgba(245,240,232,0.05);">
+  <div class="cs-dark-inner">
+    <p class="cs-section-label">05 · Strategy</p>
+    <h2 class="cs-section-heading">A six-month roadmap<br><em>built to close the gap</em></h2>
+    <div class="cs-phases">
+      <div class="cs-phase">
+        <div class="cs-phase-num">01</div>
+        <h3 class="cs-phase-title"><em>Fix the foundations</em></h3>
+        <p class="cs-phase-text">On-page SEO optimisation. Meta titles and descriptions. Fix 404 errors. Add schema markup. Improve mobile page speed. GDPR compliance. Month 1.</p>
+      </div>
+      <div class="cs-phase">
+        <div class="cs-phase-num">02</div>
+        <h3 class="cs-phase-title"><em>Build authority</em></h3>
+        <p class="cs-phase-text">Guest post outreach to 10+ mental health blogs. Directory submissions to 5+ high-DA Irish directories. Reclaim lost backlinks. Internal link optimisation. Months 1–3.</p>
+      </div>
+      <div class="cs-phase">
+        <div class="cs-phase-num">03</div>
+        <h3 class="cs-phase-title"><em>Create and publish</em></h3>
+        <p class="cs-phase-text">Launch structured blog programme. Service page optimisation. FAQ pages for featured snippets. Anonymised client stories for E-E-A-T. Resource guides to earn backlinks. Months 1–6.</p>
+      </div>
+      <div class="cs-phase">
+        <div class="cs-phase-num">04</div>
+        <h3 class="cs-phase-title"><em>Activate social</em></h3>
+        <p class="cs-phase-text">Facebook and Instagram activated with consistent, value-driven content. LinkedIn for corporate wellness targeting. Four-week content calendar with clear themes and formats. Months 1–6.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTENT CALENDAR -->
+<section class="cs-section reveal">
+  <p class="cs-section-label">06 · Content Calendar</p>
+  <h2 class="cs-section-heading">Four weeks of<br><em>showing up consistently</em></h2>
+  <div class="cs-prose">
+    <p>Consistency was the single biggest gap versus competitors. This four-week calendar gave the practice a structured start — one clear theme per week, across all active channels.</p>
+  </div>
+  <table class="cs-calendar">
+    <thead>
+      <tr>
+        <th>Week</th>
+        <th>Facebook / LinkedIn</th>
+        <th>Instagram Post</th>
+        <th>Instagram Story</th>
+        <th>X / Twitter</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Week 1</td>
+        <td>"Why Therapy is for Everyone" blog</td>
+        <td>Quote: "Healing isn't linear"</td>
+        <td>Poll: What helps you de-stress?</td>
+        <td>Stat: 1 in 4 face mental health issues</td>
+      </tr>
+      <tr>
+        <td>Week 2</td>
+        <td>Therapist spotlight + service intro</td>
+        <td>Carousel: 5 Signs You Need Therapy</td>
+        <td>AMA about therapy process</td>
+        <td>#WorldMentalHealthDay awareness</td>
+      </tr>
+      <tr>
+        <td>Week 3</td>
+        <td>Client testimonial (anonymised)</td>
+        <td>Reel: Inside the therapy room</td>
+        <td>BTS: Session preparation</td>
+        <td>Resource: "Coping with anxiety" guide</td>
+      </tr>
+      <tr>
+        <td>Week 4</td>
+        <td>"Understanding Couples Therapy" blog</td>
+        <td>Mental health myth vs fact</td>
+        <td>Affirmation of the day</td>
+        <td>Thread: Supporting a loved one with anxiety</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- PERSONAS -->
+<section class="cs-section reveal" style="background: var(--paper-dark); max-width:100%; padding: 5rem 3rem;">
+  <div style="max-width:1100px; margin:0 auto;">
+    <p class="cs-section-label">07 · Audience</p>
+    <h2 class="cs-section-heading">Two people.<br><em>Two very different journeys</em><br>to the same door.</h2>
+    <div class="cs-personas">
+      <div class="cs-persona">
+        <p class="cs-persona-name">The Stressed Professional</p>
+        <p class="cs-persona-profile">28–42 · Mid-senior professional · Dublin · High digital usage</p>
+        <div class="cs-persona-grid">
+          <div>
+            <p class="cs-persona-item-label">Pain Points</p>
+            <p class="cs-persona-item-text">Work-life balance stress, anxiety and burnout, lack of time, stigma around therapy</p>
+          </div>
+          <div>
+            <p class="cs-persona-item-label">Goals</p>
+            <p class="cs-persona-item-text">Reduce anxiety, improve performance, structured CBT, discreet and convenient sessions</p>
+          </div>
+          <div>
+            <p class="cs-persona-item-label">Channels</p>
+            <p class="cs-persona-item-text">Google Search, LinkedIn, workplace wellness portals, online booking</p>
+          </div>
+          <div>
+            <p class="cs-persona-item-label">Message</p>
+            <p class="cs-persona-item-text">Evidence-based, professional, flexible — therapy that fits around a demanding life</p>
+          </div>
+        </div>
+      </div>
+      <div class="cs-persona">
+        <p class="cs-persona-name">The Overwhelmed New Mother</p>
+        <p class="cs-persona-profile">25–38 · New parent · Dublin / Suburban · Moderate-high digital</p>
+        <div class="cs-persona-grid">
+          <div>
+            <p class="cs-persona-item-label">Pain Points</p>
+            <p class="cs-persona-item-text">Postnatal anxiety, isolation, difficulty finding time, financial pressure</p>
+          </div>
+          <div>
+            <p class="cs-persona-item-label">Goals</p>
+            <p class="cs-persona-item-text">Emotional support, mindfulness-based therapy, flexible or online sessions, affordable options</p>
+          </div>
+          <div>
+            <p class="cs-persona-item-label">Channels</p>
+            <p class="cs-persona-item-text">Facebook, Instagram, parenting forums, Google Search, low-cost counselling pages</p>
+          </div>
+          <div>
+            <p class="cs-persona-item-label">Message</p>
+            <p class="cs-persona-item-text">Compassionate, accessible, non-judgmental — you don't have to do this alone</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AIDA -->
+    <h3 style="font-family:var(--serif); font-size:1.5rem; font-weight:700; margin-top:3rem; margin-bottom:0.5rem;">The AIDA funnel</h3>
+    <p style="font-size:0.9rem; color:var(--muted); margin-bottom:0; font-weight:300;">How we move someone from unaware to booked.</p>
+    <div class="cs-aida">
+      <div class="cs-aida-cell">
+        <div class="cs-aida-letter">A</div>
+        <p class="cs-aida-stage">Attention</p>
+        <p class="cs-aida-text">Targeted mental health content, SEO-optimised landing pages, social media ads</p>
+        <p class="cs-aida-channel">Google · Facebook · Instagram</p>
+      </div>
+      <div class="cs-aida-cell">
+        <div class="cs-aida-letter">I</div>
+        <p class="cs-aida-stage">Interest</p>
+        <p class="cs-aida-text">Engaging blog posts, therapist videos, client testimonials, educational guides</p>
+        <p class="cs-aida-channel">Blog · Social media · Email</p>
+      </div>
+      <div class="cs-aida-cell">
+        <div class="cs-aida-letter">D</div>
+        <p class="cs-aida-stage">Desire</p>
+        <p class="cs-aida-text">Emotional storytelling, outcome-focused content, flexible care models and pricing</p>
+        <p class="cs-aida-channel">Landing pages · Social media</p>
+      </div>
+      <div class="cs-aida-cell">
+        <div class="cs-aida-letter">A</div>
+        <p class="cs-aida-stage">Action</p>
+        <p class="cs-aida-text">Simple online booking, responsive chat support, introductory consultation offer</p>
+        <p class="cs-aida-channel">Website · CRM · Email</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KPI — DARK -->
+<section class="cs-dark reveal">
+  <div class="cs-dark-inner">
+    <p class="cs-section-label">08 · Measurement</p>
+    <h2 class="cs-section-heading">What success<br><em>looks like at six months</em></h2>
+    <table class="cs-kpi-table">
+      <thead><tr><th>Metric</th><th>Tool</th><th>Target</th><th>Review</th></tr></thead>
+      <tbody>
+        <tr><td>Organic Traffic</td><td>Google Analytics</td><td class="target">+20%</td><td>Monthly</td></tr>
+        <tr><td>Keyword Rankings</td><td>SEMrush / Moz</td><td class="target">Top 10 for 10+ terms</td><td>Monthly</td></tr>
+        <tr><td>Backlink Growth</td><td>Moz / Ahrefs</td><td class="target">Progressive increase</td><td>Monthly</td></tr>
+        <tr><td>Social Followers</td><td>Meta Business Suite</td><td class="target">+20%</td><td>Weekly</td></tr>
+        <tr><td>Engagement Rate</td><td>Meta / LinkedIn Insights</td><td class="target">Consistent uplift</td><td>Weekly</td></tr>
+        <tr><td>Consultation Conversions</td><td>CRM / Booking System</td><td class="target">Measurable increase</td><td>Monthly</td></tr>
+        <tr><td>Domain Authority</td><td>Moz</td><td class="target">Progressive increase toward DA 16+</td><td>Monthly</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- PULLQUOTE -->
+<div class="cs-pullquote">
+  <blockquote>
+    "In a sector where someone searching 'therapy Dublin' at 11pm is often in genuine need — <em>not being found is not a neutral outcome</em>. The work was to close that gap."
+  </blockquote>
+  <cite>— Merin Reji · Digital Marketing Strategist</cite>
+</div>
+
+<!-- FOOTER -->
+<div class="cs-footer">
+  <p>Client identity withheld in accordance with confidentiality practice. All data and strategy from original academic research submission — Digital Marketing Strategy module, Dublin Business School, 2025.</p>
+  <a href="index.html" class="cs-back-btn">← Back to Portfolio</a>
+</div>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

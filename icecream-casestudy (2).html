@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Premium Irish Ice Cream Brand — Case Study · Merin Reji</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --ink: #0f0e0d;
+    --paper: #f5f0e8;
+    --paper-dark: #ede7d9;
+    --accent: #c94a2b;
+    --accent-soft: #f0e0da;
+    --muted: #7a7060;
+    --border: rgba(15,14,13,0.12);
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'DM Sans', sans-serif;
+    --mono: 'DM Mono', monospace;
+    --ice: #1a3a2a;
+    --ice-light: #2d5a42;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.25rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(245,240,232,0.9);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-back {
+    display: flex; align-items: center; gap: 0.5rem;
+    font-size: 0.78rem; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--muted); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-back:hover { color: var(--ink); }
+  .nav-label {
+    font-family: var(--mono);
+    font-size: 0.7rem; letter-spacing: 0.12em;
+    color: var(--accent); text-transform: uppercase;
+  }
+
+  /* HERO */
+  .cs-hero {
+    min-height: 90vh;
+    background: var(--ice);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+    padding-top: 5rem;
+  }
+  .cs-hero-left {
+    display: flex; flex-direction: column;
+    justify-content: flex-end;
+    padding: 5rem 4rem 5rem 3rem;
+    position: relative; z-index: 2;
+  }
+  .cs-eyebrow {
+    font-family: var(--mono);
+    font-size: 0.7rem; letter-spacing: 0.16em;
+    text-transform: uppercase; color: #8fbb6e;
+    margin-bottom: 1.5rem;
+    opacity: 0; animation: fadeUp 0.8s 0.3s forwards;
+  }
+  .cs-title {
+    font-family: var(--serif);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700; line-height: 1.05;
+    color: #f5f0e8; margin-bottom: 1.5rem;
+    opacity: 0; animation: fadeUp 0.9s 0.5s forwards;
+  }
+  .cs-title em { font-style: italic; color: #8fbb6e; display: block; }
+  .cs-subtitle {
+    font-size: 1rem; color: rgba(245,240,232,0.6);
+    font-weight: 300; line-height: 1.8;
+    max-width: 400px; margin-bottom: 2.5rem;
+    opacity: 0; animation: fadeUp 0.9s 0.7s forwards;
+  }
+  .cs-tags {
+    display: flex; flex-wrap: wrap; gap: 0.5rem;
+    opacity: 0; animation: fadeUp 0.9s 0.9s forwards;
+  }
+  .cs-tag {
+    font-family: var(--mono); font-size: 0.65rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.35rem 0.8rem;
+    border: 1px solid rgba(245,240,232,0.2);
+    color: rgba(245,240,232,0.6);
+  }
+  .cs-hero-right {
+    position: relative;
+    display: flex; align-items: flex-end;
+    padding: 4rem 3rem;
+    opacity: 0; animation: fadeIn 1.2s 1s forwards;
+  }
+  .cs-metrics {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1.5px; width: 100%;
+    background: rgba(245,240,232,0.08);
+  }
+  .cs-metric {
+    background: rgba(26,58,42,0.8);
+    backdrop-filter: blur(4px);
+    padding: 1.75rem 1.5rem;
+    border: 1px solid rgba(245,240,232,0.06);
+  }
+  .cs-metric-num {
+    font-family: var(--serif); font-size: 2.4rem;
+    font-weight: 700; color: #f5f0e8; line-height: 1;
+  }
+  .cs-metric-num span { color: #8fbb6e; }
+  .cs-metric-label {
+    font-size: 0.7rem; letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.45); margin-top: 0.4rem;
+  }
+  .cs-hero-bg {
+    position: absolute; bottom: -3rem; right: -2rem;
+    font-family: var(--serif); font-size: 22rem;
+    font-weight: 700; color: rgba(245,240,232,0.03);
+    line-height: 1; pointer-events: none; user-select: none;
+  }
+  .cs-confidential {
+    position: absolute; top: 6rem; right: 3rem;
+    font-family: var(--mono); font-size: 0.62rem;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: rgba(245,240,232,0.2);
+    border: 1px solid rgba(245,240,232,0.1);
+    padding: 0.3rem 0.7rem;
+  }
+
+  /* CONTENT */
+  .cs-body { max-width: 1100px; margin: 0 auto; }
+
+  /* OVERVIEW STRIP */
+  .cs-overview {
+    background: var(--paper-dark);
+    border-bottom: 1px solid var(--border);
+    padding: 3rem;
+  }
+  .cs-overview-grid {
+    display: grid; grid-template-columns: repeat(5, 1fr);
+    gap: 2rem; max-width: 1100px; margin: 0 auto;
+  }
+  .cs-overview-item {}
+  .cs-overview-label {
+    font-family: var(--mono); font-size: 0.62rem;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 0.4rem;
+  }
+  .cs-overview-value {
+    font-size: 0.9rem; font-weight: 500; color: var(--ink);
+    line-height: 1.4;
+  }
+
+  /* SECTION */
+  .cs-section {
+    padding: 5rem 3rem;
+    max-width: 1100px; margin: 0 auto;
+  }
+  .cs-section-label {
+    font-family: var(--mono); font-size: 0.7rem;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 0.75rem;
+  }
+  .cs-section-heading {
+    font-family: var(--serif);
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 700; line-height: 1.2; margin-bottom: 2rem;
+  }
+  .cs-section-heading em { font-style: italic; color: var(--accent); }
+  .cs-prose {
+    font-size: 1rem; color: var(--muted);
+    line-height: 1.9; font-weight: 300;
+    max-width: 720px;
+  }
+  .cs-prose p + p { margin-top: 1.1rem; }
+  .cs-prose strong { color: var(--ink); font-weight: 500; }
+
+  /* FINDINGS GRID */
+  .cs-findings {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px; background: var(--border);
+    margin-top: 3rem; border: 1px solid var(--border);
+  }
+  .cs-finding {
+    background: var(--paper);
+    padding: 2rem;
+    transition: background 0.2s;
+  }
+  .cs-finding:hover { background: var(--accent-soft); }
+  .cs-finding-icon { font-size: 1.5rem; margin-bottom: 0.75rem; opacity: 0.7; }
+  .cs-finding-title {
+    font-family: var(--serif); font-size: 1rem;
+    font-weight: 700; margin-bottom: 0.5rem;
+  }
+  .cs-finding-text {
+    font-size: 0.85rem; color: var(--muted);
+    line-height: 1.7; font-weight: 300;
+  }
+
+  /* DARK SECTION */
+  .cs-dark {
+    background: var(--ink);
+    padding: 5rem 3rem;
+    color: var(--paper);
+  }
+  .cs-dark-inner { max-width: 1100px; margin: 0 auto; }
+  .cs-dark .cs-section-label { color: #8fbb6e; }
+  .cs-dark .cs-section-heading { color: var(--paper); }
+  .cs-dark .cs-section-heading em { color: #8fbb6e; }
+
+  /* SWOT */
+  .cs-swot {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1.5px; background: rgba(245,240,232,0.08);
+    margin-top: 2.5rem;
+  }
+  .cs-swot-cell {
+    padding: 2rem;
+  }
+  .cs-swot-cell:nth-child(1) { background: rgba(143,187,110,0.08); }
+  .cs-swot-cell:nth-child(2) { background: rgba(201,74,43,0.08); }
+  .cs-swot-cell:nth-child(3) { background: rgba(245,190,46,0.06); }
+  .cs-swot-cell:nth-child(4) { background: rgba(100,100,100,0.06); }
+  .cs-swot-label {
+    font-family: var(--mono); font-size: 0.65rem;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .cs-swot-cell:nth-child(1) .cs-swot-label { color: #8fbb6e; }
+  .cs-swot-cell:nth-child(2) .cs-swot-label { color: var(--accent); }
+  .cs-swot-cell:nth-child(3) .cs-swot-label { color: #e8a020; }
+  .cs-swot-cell:nth-child(4) .cs-swot-label { color: rgba(245,240,232,0.4); }
+  .cs-swot-list { list-style: none; }
+  .cs-swot-list li {
+    font-size: 0.85rem; color: rgba(245,240,232,0.65);
+    line-height: 1.6; padding: 0.3rem 0;
+    border-bottom: 1px solid rgba(245,240,232,0.05);
+    font-weight: 300;
+  }
+  .cs-swot-list li::before { content: '▸ '; color: inherit; opacity: 0.5; }
+
+  /* STRATEGY PILLARS */
+  .cs-pillars {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem; margin-top: 2.5rem;
+  }
+  .cs-pillar {
+    background: rgba(245,240,232,0.04);
+    border: 1px solid rgba(245,240,232,0.08);
+    padding: 2rem;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .cs-pillar:hover {
+    background: rgba(143,187,110,0.06);
+    border-color: rgba(143,187,110,0.2);
+  }
+  .cs-pillar-num {
+    font-family: var(--serif); font-size: 3rem;
+    font-weight: 700; color: rgba(245,240,232,0.08);
+    line-height: 1; margin-bottom: 0.5rem;
+  }
+  .cs-pillar-title {
+    font-family: var(--serif); font-size: 1.15rem;
+    font-weight: 700; color: var(--paper);
+    margin-bottom: 0.75rem; line-height: 1.3;
+  }
+  .cs-pillar-title em { font-style: italic; color: #8fbb6e; }
+  .cs-pillar-text {
+    font-size: 0.85rem; color: rgba(245,240,232,0.5);
+    line-height: 1.7; font-weight: 300; margin-bottom: 1rem;
+  }
+  .cs-pillar-metric {
+    font-family: var(--mono); font-size: 0.65rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: #8fbb6e;
+  }
+
+  /* PERSONAS */
+  .cs-personas {
+    display: grid; grid-template-columns: repeat(5, 1fr);
+    gap: 1rem; margin-top: 2.5rem;
+  }
+  .cs-persona {
+    background: var(--paper-dark);
+    border: 1px solid var(--border);
+    padding: 1.5rem 1.25rem;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .cs-persona:hover { border-color: var(--accent); background: var(--accent-soft); }
+  .cs-persona-name {
+    font-family: var(--serif); font-size: 1.1rem;
+    font-weight: 700; margin-bottom: 0.25rem;
+  }
+  .cs-persona-profile {
+    font-size: 0.75rem; color: var(--accent);
+    font-family: var(--mono); letter-spacing: 0.06em;
+    margin-bottom: 0.75rem;
+  }
+  .cs-persona-need {
+    font-size: 0.8rem; color: var(--muted);
+    line-height: 1.6; font-weight: 300;
+  }
+
+  /* KPI TABLE */
+  .cs-kpi-table {
+    width: 100%; border-collapse: collapse;
+    margin-top: 2.5rem;
+  }
+  .cs-kpi-table th {
+    font-family: var(--mono); font-size: 0.65rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: rgba(245,240,232,0.4); text-align: left;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid rgba(245,240,232,0.08);
+  }
+  .cs-kpi-table td {
+    padding: 1rem; font-size: 0.88rem;
+    color: rgba(245,240,232,0.65); font-weight: 300;
+    border-bottom: 1px solid rgba(245,240,232,0.05);
+  }
+  .cs-kpi-table td:first-child { font-weight: 500; color: var(--paper); }
+  .cs-kpi-table td.target { color: #8fbb6e; font-weight: 500; }
+
+  /* BUDGET */
+  .cs-budget {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 1.5px; background: rgba(245,240,232,0.08);
+    margin-top: 2.5rem;
+  }
+  .cs-budget-cell {
+    background: rgba(26,58,42,0.6); padding: 1.5rem;
+  }
+  .cs-budget-channel {
+    font-size: 0.8rem; font-weight: 500; color: var(--paper);
+    margin-bottom: 0.25rem;
+  }
+  .cs-budget-pct {
+    font-family: var(--serif); font-size: 2rem;
+    font-weight: 700; color: #8fbb6e; line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+  .cs-budget-desc {
+    font-size: 0.72rem; color: rgba(245,240,232,0.4);
+    line-height: 1.5; font-weight: 300;
+  }
+
+  /* PULLQUOTE */
+  .cs-pullquote {
+    padding: 5rem 3rem;
+    background: var(--ice);
+    text-align: center;
+  }
+  .cs-pullquote blockquote {
+    font-family: var(--serif);
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    font-style: italic; font-weight: 400;
+    color: rgba(245,240,232,0.85); line-height: 1.6;
+    max-width: 800px; margin: 0 auto;
+  }
+  .cs-pullquote blockquote em { color: #8fbb6e; font-style: normal; }
+  .cs-pullquote cite {
+    display: block; margin-top: 1.5rem;
+    font-family: var(--mono); font-size: 0.7rem;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: rgba(245,240,232,0.3);
+  }
+
+  /* BACK FOOTER */
+  .cs-footer {
+    background: var(--ink); padding: 4rem 3rem;
+    text-align: center;
+  }
+  .cs-footer p {
+    font-size: 0.85rem; color: rgba(245,240,232,0.3);
+    margin-bottom: 1.5rem;
+  }
+  .cs-back-btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: var(--accent); color: #fff;
+    padding: 0.9rem 2rem; text-decoration: none;
+    font-size: 0.82rem; letter-spacing: 0.08em;
+    text-transform: uppercase; font-weight: 500;
+    transition: background 0.2s;
+  }
+  .cs-back-btn:hover { background: #a03820; }
+
+  /* REVEAL */
+  .reveal {
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; } to { opacity: 1; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-back" href="index.html">← Back to Portfolio</a>
+  <span class="nav-label">Case Study · Confidential</span>
+</nav>
+
+<!-- HERO -->
+<section class="cs-hero">
+  <div class="cs-hero-left">
+    <p class="cs-eyebrow">Case Study · FMCG · Ireland · 2025</p>
+    <h1 class="cs-title">
+      Premium Irish<br>
+      <em>Artisan Ice Cream</em>
+    </h1>
+    <p class="cs-subtitle">A full digital marketing strategy for one of Ireland's most beloved artisan food brands — built on heritage, hyper-local ingredients, and a story that deserves to be heard far beyond Kerry.</p>
+    <div class="cs-tags">
+      <span class="cs-tag">Digital Strategy</span>
+      <span class="cs-tag">Paid Social</span>
+      <span class="cs-tag">SEO</span>
+      <span class="cs-tag">CRM</span>
+      <span class="cs-tag">FMCG</span>
+      <span class="cs-tag">Brand Audit</span>
+      <span class="cs-tag">STP Framework</span>
+    </div>
+  </div>
+  <div class="cs-hero-right">
+    <div class="cs-metrics">
+      <div class="cs-metric">
+        <div class="cs-metric-num">60<span>%</span></div>
+        <div class="cs-metric-label">Projected Instagram reach increase</div>
+      </div>
+      <div class="cs-metric">
+        <div class="cs-metric-num">€14.4<span>K</span></div>
+        <div class="cs-metric-label">Paid media campaign budget</div>
+      </div>
+      <div class="cs-metric">
+        <div class="cs-metric-num">20<span>%</span></div>
+        <div class="cs-metric-label">Target sales growth — peak season</div>
+      </div>
+      <div class="cs-metric">
+        <div class="cs-metric-num">€60<span>K+</span></div>
+        <div class="cs-metric-label">Projected revenue attribution</div>
+      </div>
+    </div>
+    <div class="cs-hero-bg">🍦</div>
+  </div>
+  <span class="cs-confidential">Client identity withheld · Confidential</span>
+</section>
+
+<!-- OVERVIEW STRIP -->
+<div class="cs-overview">
+  <div class="cs-overview-grid">
+    <div class="cs-overview-item">
+      <p class="cs-overview-label">Industry</p>
+      <p class="cs-overview-value">Artisan Ice Cream / FMCG</p>
+    </div>
+    <div class="cs-overview-item">
+      <p class="cs-overview-label">Geography</p>
+      <p class="cs-overview-value">Ireland — National & Tourist</p>
+    </div>
+    <div class="cs-overview-item">
+      <p class="cs-overview-label">Revenue</p>
+      <p class="cs-overview-value">Est. €7.5M annually</p>
+    </div>
+    <div class="cs-overview-item">
+      <p class="cs-overview-label">Locations</p>
+      <p class="cs-overview-value">6 stores — Dingle to Dublin</p>
+    </div>
+    <div class="cs-overview-item">
+      <p class="cs-overview-label">Scope</p>
+      <p class="cs-overview-value">Full digital audit + 3-phase strategy</p>
+    </div>
+  </div>
+</div>
+
+<!-- EXECUTIVE SUMMARY -->
+<section class="cs-section reveal">
+  <p class="cs-section-label">01 · Executive Summary</p>
+  <h2 class="cs-section-heading">A brand with an<br><em>exceptional story</em><br>and an underutilised stage</h2>
+  <div class="cs-prose">
+    <p>A family-owned artisan ice cream brand founded in 2000 in a Gaeltacht town on the west coast of Kerry. Rare Kerry cow milk. Dingle Bay sea salt. Zero artificial additives. A product with a genuinely extraordinary story — and a digital presence that wasn't telling it.</p>
+    <p>When I conducted a full digital audit, the gap was clear: <strong>zero active paid campaigns</strong>, an Instagram following of just 1,038 against an industry average of 10,000–50,000, and two direct competitors already running active Meta campaigns targeting the same audiences. The brand had exceptional offline equity but was invisible where its customers were spending their time.</p>
+    <p>The strategy I developed focused on one central truth: <strong>the product is the story</strong>. Kerry cow milk, Dingle sea salt, Gaeltacht heritage — these aren't just ingredients, they're competitive advantages. The work was to turn that story into a structured, phased digital presence that could convert the brand's exceptional offline reputation into sustainable digital growth.</p>
+  </div>
+
+  <div class="cs-findings">
+    <div class="cs-finding">
+      <div class="cs-finding-icon">📉</div>
+      <p class="cs-finding-title">Zero paid advertising</p>
+      <p class="cs-finding-text">No active campaigns at time of audit — while Gino's Gelato and Ben & Jerry's both ran live Meta campaigns targeting the same audience segments.</p>
+    </div>
+    <div class="cs-finding">
+      <div class="cs-finding-icon">📱</div>
+      <p class="cs-finding-title">Social presence underperforming</p>
+      <p class="cs-finding-text">~1,038 Instagram followers against an industry average of 10,000–50,000. Sporadic posting frequency vs. the recommended 3–5 posts per week.</p>
+    </div>
+    <div class="cs-finding">
+      <div class="cs-finding-icon">📈</div>
+      <p class="cs-finding-title">Market growing fast</p>
+      <p class="cs-finding-text">The artisanal ice cream market is projected to grow from $6.4B to $11.6B by 2035 (CAGR 6.1%) — significant opportunity for a brand already positioned at the premium end.</p>
+    </div>
+    <div class="cs-finding">
+      <div class="cs-finding-icon">⭐</div>
+      <p class="cs-finding-title">Perceived quality score: 9/10</p>
+      <p class="cs-finding-text">Brand audit scored the client equal to Ben & Jerry's on perceived quality — but with a fraction of the digital investment. The ceiling is high.</p>
+    </div>
+    <div class="cs-finding">
+      <div class="cs-finding-icon">🎯</div>
+      <p class="cs-finding-title">Powerful positioning gap</p>
+      <p class="cs-finding-text">No competitor occupies the "hyper-local Irish heritage + premium artisan" space digitally. The brand can own this narrative — if it shows up consistently.</p>
+    </div>
+    <div class="cs-finding">
+      <div class="cs-finding-icon">🌍</div>
+      <p class="cs-finding-title">Tourist segment untapped</p>
+      <p class="cs-finding-text">Prime locations in Dingle, Killarney, Galway and Dublin — yet no geo-targeted tourist campaigns. A high-intent, high-spend audience going unaddressed.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SWOT — DARK -->
+<section class="cs-dark reveal">
+  <div class="cs-dark-inner">
+    <p class="cs-section-label">02 · Brand Audit</p>
+    <h2 class="cs-section-heading">Where the brand<br>stands — <em>honestly</em></h2>
+    <div class="cs-swot">
+      <div class="cs-swot-cell">
+        <p class="cs-swot-label">Strengths</p>
+        <ul class="cs-swot-list">
+          <li>Premium artisan brand positioning</li>
+          <li>Rare Kerry cow milk — genuine differentiation</li>
+          <li>Zero artificial additives — full transparency</li>
+          <li>Prime tourist locations across Ireland</li>
+          <li>Strong Irish heritage and cultural storytelling</li>
+          <li>Energy efficiency +19% improvement (Bord Bia, 2024)</li>
+        </ul>
+      </div>
+      <div class="cs-swot-cell">
+        <p class="cs-swot-label">Weaknesses</p>
+        <ul class="cs-swot-list">
+          <li>Only 6 retail locations — limited scale</li>
+          <li>Heavy seasonal and tourist dependency</li>
+          <li>High cost structure from rare ingredients</li>
+          <li>Geographic concentration in Kerry</li>
+          <li>Zero paid digital advertising investment</li>
+          <li>Instagram following significantly below industry average</li>
+        </ul>
+      </div>
+      <div class="cs-swot-cell">
+        <p class="cs-swot-label">Opportunities</p>
+        <ul class="cs-swot-list">
+          <li>Artisanal market: $6.4B → $11.6B by 2035</li>
+          <li>Premium segment +18.4% luxury growth</li>
+          <li>National expansion through retail partnerships</li>
+          <li>Export via Irish diaspora and cultural heritage</li>
+          <li>Health and sustainability trends favour natural ingredients</li>
+        </ul>
+      </div>
+      <div class="cs-swot-cell">
+        <p class="cs-swot-label">Threats</p>
+        <ul class="cs-swot-list">
+          <li>Competitors with larger paid media budgets</li>
+          <li>Kerry cow milk supply chain vulnerabilities</li>
+          <li>Premium price sensitivity in economic downturns</li>
+          <li>Seasonal demand fluctuation and weather dependency</li>
+          <li>Consumer shift toward plant-based alternatives</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRATEGY -->
+<section class="cs-dark reveal" style="background:#111; border-top: 1px solid rgba(245,240,232,0.06);">
+  <div class="cs-dark-inner">
+    <p class="cs-section-label">03 · Strategy</p>
+    <h2 class="cs-section-heading">Three pillars.<br><em>One story.</em></h2>
+    <div class="cs-pillars">
+      <div class="cs-pillar">
+        <div class="cs-pillar-num">01</div>
+        <h3 class="cs-pillar-title">Bring the Magic <em>Online</em></h3>
+        <p class="cs-pillar-text">Behind-the-scenes craftsmanship, local ingredient sourcing, and staff stories — turned into a consistent video and Reels content strategy. The product makes itself; the job is to show it.</p>
+        <p class="cs-pillar-metric">Tactics: Video series · Reels · Staff features · Flavour polls</p>
+      </div>
+      <div class="cs-pillar">
+        <div class="cs-pillar-num">02</div>
+        <h3 class="cs-pillar-title">Convert Tourists <em>& Locals</em></h3>
+        <p class="cs-pillar-text">Geo-targeted Meta and Google Ads designed around peak tourist windows. A Summer Passport loyalty programme. Flavour bundles and Reels ads targeting both repeat visitors and first-time tourists.</p>
+        <p class="cs-pillar-metric">Target: +20% sales · +25% loyalty sign-ups · 3–5% ad CTR</p>
+      </div>
+      <div class="cs-pillar">
+        <div class="cs-pillar-num">03</div>
+        <h3 class="cs-pillar-title">Own the <em>Irish Story</em></h3>
+        <p class="cs-pillar-text">Ingredient spotlights. Food influencer collaborations in the travel and culture niche. Blog and email content that positions the brand as Ireland's definitive artisan ice cream — not just a product, but a place.</p>
+        <p class="cs-pillar-metric">Target: Positive brand sentiment >80% · +50% organic mentions</p>
+      </div>
+    </div>
+
+    <div class="cs-budget" style="margin-top:3rem;">
+      <div class="cs-budget-cell">
+        <p class="cs-budget-channel">Social Media (Meta + TikTok)</p>
+        <p class="cs-budget-pct">45%</p>
+        <p class="cs-budget-desc">Storytelling, Reels ads, geo-targeting — Video, Carousel, Stories</p>
+      </div>
+      <div class="cs-budget-cell">
+        <p class="cs-budget-channel">Google Ads</p>
+        <p class="cs-budget-pct">20%</p>
+        <p class="cs-budget-desc">High-intent search, local targeting — Search, Display, Shopping</p>
+      </div>
+      <div class="cs-budget-cell">
+        <p class="cs-budget-channel">Influencer Partnerships</p>
+        <p class="cs-budget-pct">15%</p>
+        <p class="cs-budget-desc">Food bloggers, Irish culture creators — Sponsored content, Reels</p>
+      </div>
+      <div class="cs-budget-cell">
+        <p class="cs-budget-channel">Email / CRM + Video</p>
+        <p class="cs-budget-pct">20%</p>
+        <p class="cs-budget-desc">Retention + brand storytelling — Newsletter, YouTube Shorts</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PERSONAS -->
+<section class="cs-section reveal">
+  <p class="cs-section-label">04 · Audience</p>
+  <h2 class="cs-section-heading">Five people.<br><em>Five reasons</em> to love ice cream.</h2>
+  <div class="cs-prose" style="margin-bottom: 0;">
+    <p>A differentiated multi-segment approach — five distinct personas, each with their own channel, message, and moment of truth.</p>
+  </div>
+  <div class="cs-personas">
+    <div class="cs-persona">
+      <p class="cs-persona-name">Mo</p>
+      <p class="cs-persona-profile">69 · Dingle local</p>
+      <p class="cs-persona-need">Creamy dairy-free options that feel real, not clinical. Reaches her via Facebook and word-of-mouth.</p>
+    </div>
+    <div class="cs-persona">
+      <p class="cs-persona-name">Emily</p>
+      <p class="cs-persona-profile">24 · Dublin grad</p>
+      <p class="cs-persona-need">Comfort food that feels wholesome and mood-lifting. Instagram, TikTok, influencer content.</p>
+    </div>
+    <div class="cs-persona">
+      <p class="cs-persona-name">Finn</p>
+      <p class="cs-persona-profile">8 · Clonakilty</p>
+      <p class="cs-persona-need">Fun, adventure, colourful flavours. TV ads, in-store displays, parent social media.</p>
+    </div>
+    <div class="cs-persona">
+      <p class="cs-persona-name">Jamie</p>
+      <p class="cs-persona-profile">16 · Galway</p>
+      <p class="cs-persona-need">Bold, shareable, Instagrammable local experience. Instagram, TikTok, Snapchat.</p>
+    </div>
+    <div class="cs-persona">
+      <p class="cs-persona-name">David</p>
+      <p class="cs-persona-profile">42 · Cork family man</p>
+      <p class="cs-persona-need">Authentic Irish treat, child-friendly environment. Facebook, Google Maps, website.</p>
+    </div>
+  </div>
+</section>
+
+<!-- KPI TABLE — DARK -->
+<section class="cs-dark reveal">
+  <div class="cs-dark-inner">
+    <p class="cs-section-label">05 · Measurement</p>
+    <h2 class="cs-section-heading">What success<br><em>looks like</em></h2>
+    <table class="cs-kpi-table">
+      <thead>
+        <tr>
+          <th>KPI</th>
+          <th>Baseline</th>
+          <th>Target</th>
+          <th>Timeframe</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Instagram Followers</td>
+          <td>~1,038</td>
+          <td class="target">10,000+</td>
+          <td>12 months</td>
+        </tr>
+        <tr>
+          <td>Engagement Rate</td>
+          <td>2–3%</td>
+          <td class="target">4–5%</td>
+          <td>3–6 months</td>
+        </tr>
+        <tr>
+          <td>Instagram Reach</td>
+          <td>Baseline</td>
+          <td class="target">+60%</td>
+          <td>3–6 months</td>
+        </tr>
+        <tr>
+          <td>Google Ad CTR</td>
+          <td>0% (no campaigns)</td>
+          <td class="target">3–5%</td>
+          <td>Peak season</td>
+        </tr>
+        <tr>
+          <td>Online Sales</td>
+          <td>Baseline</td>
+          <td class="target">+20%</td>
+          <td>Peak season</td>
+        </tr>
+        <tr>
+          <td>Loyalty Sign-Ups</td>
+          <td>Baseline</td>
+          <td class="target">+25%</td>
+          <td>3 months</td>
+        </tr>
+        <tr>
+          <td>Brand Sentiment</td>
+          <td>Baseline survey</td>
+          <td class="target">>80% positive</td>
+          <td>Quarterly</td>
+        </tr>
+        <tr>
+          <td>Projected Revenue</td>
+          <td>—</td>
+          <td class="target">€60,000+ attributed</td>
+          <td>Campaign period</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- PULLQUOTE -->
+<div class="cs-pullquote">
+  <blockquote>
+    "The central challenge was not brand quality — which was demonstrably exceptional. It was <em>brand visibility</em>. The story was already there. The work was helping it travel."
+  </blockquote>
+  <cite>— Merin Reji · Digital Marketing Strategist</cite>
+</div>
+
+<!-- FOOTER -->
+<div class="cs-footer">
+  <p>Client identity withheld in accordance with confidentiality practice. All data and strategy from original academic research submission (B9DM105, Dublin Business School, 2025).</p>
+  <a href="index.html" class="cs-back-btn">← Back to Portfolio</a>
+</div>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
