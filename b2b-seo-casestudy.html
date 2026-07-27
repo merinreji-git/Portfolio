@@ -1,0 +1,516 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SEO From Zero Case Study · Merin Reji</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500;1,700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --ink: #10100d;
+        --paper: #f5f0e8;
+        --paper-dark: #e7ddcc;
+        --blue: #173a5c;
+        --purple: #321756;
+        --accent: #c94a2b;
+        --muted: #766d60;
+        --line: rgba(16, 16, 13, 0.14);
+        --light-line: rgba(245, 240, 232, 0.16);
+        --serif: "Playfair Display", Georgia, serif;
+        --sans: "DM Sans", system-ui, sans-serif;
+        --mono: "DM Mono", monospace;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: var(--sans);
+        line-height: 1.7;
+      }
+
+      nav {
+        position: fixed;
+        inset: 0 0 auto;
+        z-index: 10;
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 18px clamp(20px, 4vw, 54px);
+        background: rgba(245, 240, 232, 0.9);
+        border-bottom: 1px solid var(--line);
+        backdrop-filter: blur(16px);
+      }
+
+      nav a, .nav-label {
+        color: var(--muted);
+        font-family: var(--mono);
+        font-size: 0.72rem;
+        text-decoration: none;
+        text-transform: uppercase;
+      }
+
+      nav a:hover { color: var(--accent); }
+
+      .hero {
+        position: relative;
+        min-height: 88vh;
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(340px, 1.1fr);
+        gap: clamp(32px, 6vw, 86px);
+        align-items: center;
+        padding: 110px clamp(22px, 5vw, 76px) clamp(44px, 6vw, 76px);
+        overflow: hidden;
+        background:
+          radial-gradient(circle at 18% 22%, rgba(23, 58, 92, 0.42), transparent 30%),
+          radial-gradient(circle at 76% 72%, rgba(50, 23, 86, 0.36), transparent 34%),
+          #12100f;
+        color: var(--paper);
+      }
+
+      .hero::after {
+        content: "SEO";
+        position: absolute;
+        right: -20px;
+        bottom: -18px;
+        color: rgba(245, 240, 232, 0.045);
+        font-family: var(--serif);
+        font-size: clamp(7rem, 20vw, 18rem);
+        font-weight: 700;
+        line-height: 0.8;
+      }
+
+      .kicker {
+        margin: 0 0 16px;
+        color: #f1a067;
+        font-family: var(--mono);
+        font-size: 0.72rem;
+        text-transform: uppercase;
+      }
+
+      h1, h2, h3, p { margin-top: 0; }
+
+      h1 {
+        max-width: 760px;
+        margin-bottom: 22px;
+        font-family: var(--serif);
+        font-size: clamp(2.45rem, 5.1vw, 5.25rem);
+        line-height: 0.98;
+      }
+
+      h2 {
+        margin-bottom: 18px;
+        font-family: var(--serif);
+        font-size: clamp(2rem, 4vw, 4rem);
+        line-height: 1;
+      }
+
+      h3 {
+        font-family: var(--serif);
+        font-size: clamp(1.35rem, 2.1vw, 2rem);
+        line-height: 1.15;
+      }
+
+      .hero p:not(.kicker) {
+        max-width: 660px;
+        color: rgba(245, 240, 232, 0.74);
+        font-size: 1.04rem;
+        font-weight: 300;
+      }
+
+      .hero-proof {
+        position: relative;
+        z-index: 2;
+        overflow: hidden;
+        min-height: 460px;
+        border: 1px solid var(--light-line);
+        background: #171311;
+        box-shadow: 0 26px 80px rgba(0, 0, 0, 0.26);
+      }
+
+      .hero-proof img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: left top;
+        opacity: 0.55;
+        filter: saturate(0.85) contrast(1.08);
+      }
+
+      .proof-metrics {
+        position: absolute;
+        right: 22px;
+        bottom: 22px;
+        left: 22px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1px;
+        background: var(--light-line);
+        border: 1px solid var(--light-line);
+      }
+
+      .proof-metrics div {
+        min-height: 94px;
+        padding: 16px;
+        background: rgba(16, 16, 13, 0.72);
+        backdrop-filter: blur(8px);
+      }
+
+      .proof-metrics strong {
+        display: block;
+        color: var(--paper);
+        font-family: var(--serif);
+        font-size: clamp(1.8rem, 3vw, 3rem);
+        line-height: 1;
+      }
+
+      .proof-metrics span {
+        color: rgba(245, 240, 232, 0.58);
+        font-family: var(--mono);
+        font-size: 0.64rem;
+        text-transform: uppercase;
+      }
+
+      .section {
+        padding: clamp(70px, 9vw, 116px) clamp(22px, 5vw, 76px);
+      }
+
+      .section-heading {
+        max-width: 880px;
+        margin-bottom: 34px;
+      }
+
+      .section-heading p:not(.kicker), .story-copy {
+        color: var(--muted);
+        font-weight: 300;
+        font-size: 1.05rem;
+      }
+
+      .overview-grid, .work-grid, .proof-grid {
+        display: grid;
+        gap: 1px;
+        background: var(--line);
+        border: 1px solid var(--line);
+      }
+
+      .overview-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .overview-grid div, .work-card, .proof-card {
+        background: var(--paper);
+        padding: clamp(22px, 3vw, 34px);
+      }
+
+      .overview-grid strong {
+        display: block;
+        margin-bottom: 8px;
+        color: var(--accent);
+        font-family: var(--mono);
+        font-size: 0.68rem;
+        text-transform: uppercase;
+      }
+
+      .dark {
+        background: var(--ink);
+        color: var(--paper);
+      }
+
+      .dark .section-heading p:not(.kicker), .dark p {
+        color: rgba(245, 240, 232, 0.66);
+      }
+
+      .work-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        background: var(--light-line);
+        border-color: var(--light-line);
+      }
+
+      .work-card {
+        min-height: 255px;
+        background:
+          linear-gradient(145deg, rgba(23, 58, 92, 0.16), transparent 56%),
+          rgba(245, 240, 232, 0.04);
+      }
+
+      .work-card:nth-child(2n) {
+        background:
+          linear-gradient(145deg, rgba(50, 23, 86, 0.16), transparent 58%),
+          rgba(245, 240, 232, 0.04);
+      }
+
+      .work-card p {
+        color: rgba(245, 240, 232, 0.68);
+        font-weight: 300;
+      }
+
+      .proof-section {
+        background: var(--paper-dark);
+      }
+
+      .proof-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .proof-card img {
+        display: block;
+        width: 100%;
+        height: 260px;
+        object-fit: cover;
+        object-position: left top;
+        margin-bottom: 18px;
+        border: 1px solid var(--line);
+      }
+
+      .strategy-band {
+        display: grid;
+        grid-template-columns: minmax(0, 0.8fr) minmax(320px, 1.2fr);
+        gap: clamp(28px, 5vw, 72px);
+        align-items: start;
+        background: var(--paper);
+      }
+
+      .tag-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 22px;
+      }
+
+      .tag-row span {
+        padding: 6px 10px;
+        border: 1px solid currentColor;
+        color: var(--accent);
+        font-family: var(--mono);
+        font-size: 0.66rem;
+        text-transform: uppercase;
+      }
+
+      .pullquote {
+        padding: clamp(44px, 6vw, 72px) clamp(22px, 5vw, 76px);
+        background:
+          radial-gradient(circle at 20% 22%, rgba(23, 58, 92, 0.26), transparent 30%),
+          radial-gradient(circle at 82% 78%, rgba(50, 23, 86, 0.24), transparent 32%),
+          #15110f;
+        color: var(--paper);
+        text-align: center;
+      }
+
+      blockquote {
+        max-width: 800px;
+        margin: 0 auto;
+        font-family: var(--serif);
+        font-size: clamp(1.3rem, 2.35vw, 2.45rem);
+        font-style: italic;
+        line-height: 1.12;
+      }
+
+      .footer {
+        padding: 44px clamp(22px, 5vw, 76px);
+        background: var(--ink);
+        color: rgba(245, 240, 232, 0.58);
+        text-align: center;
+      }
+
+      .footer a {
+        color: var(--paper);
+        text-decoration: none;
+      }
+
+      @media (max-width: 900px) {
+        .hero, .strategy-band, .overview-grid, .work-grid, .proof-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero {
+          min-height: auto;
+        }
+
+        .hero-proof {
+          min-height: 380px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="index.html">Back to portfolio</a>
+      <span class="nav-label">Case study · SEO from zero</span>
+    </nav>
+
+    <main>
+      <section class="hero">
+        <div>
+          <p class="kicker">B2B & B2C SEO · Organic growth</p>
+          <h1>Building SEO from zero as the first SEO person inside the business.</h1>
+          <p>
+            This was not a project where SEO already had a system waiting. The work began
+            with foundations: audits, keyword mapping, technical fixes, reporting, content
+            structure, and building organic pages for both B2B and B2C audiences.
+          </p>
+        </div>
+        <aside class="hero-proof" aria-label="Search Console proof">
+          <img src="https://i.ibb.co/4gS96902/Screenshot-2026-05-26-142802.png" alt="Google Search Console screenshot">
+          <div class="proof-metrics">
+            <div><strong>55%</strong><span>Organic traffic growth</span></div>
+            <div><strong>310K</strong><span>Total clicks shown</span></div>
+            <div><strong>9.61M</strong><span>Total impressions</span></div>
+            <div><strong>3.2%</strong><span>Average CTR</span></div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">
+          <p class="kicker">The starting point</p>
+          <h2>Before the numbers, there had to be a working SEO foundation.</h2>
+          <p>
+            Being the first SEO person meant the work was not only about optimisation.
+            It was also about creating habits: how pages are planned, how keywords are
+            chosen, how performance is reviewed, and how organic search becomes part of
+            the business instead of an afterthought.
+          </p>
+        </div>
+        <div class="overview-grid">
+          <div><strong>Role</strong>First SEO person building the function from the ground up.</div>
+          <div><strong>Scope</strong>B2B and B2C organic pages, technical SEO, reporting, and content planning.</div>
+          <div><strong>Result</strong>55% organic traffic growth, supported by Search Console performance data.</div>
+          <div><strong>Focus</strong>Make SEO repeatable, measurable, and useful for business growth.</div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">
+          <p class="kicker">The major challenge</p>
+          <h2>The difficult part was staying steady when the SERP kept shifting.</h2>
+          <p>
+            Frequent algorithm updates made the work less predictable than a neat growth
+            chart can show. Rankings moved, search results changed, and some pages that
+            had been performing well needed a fresh look. The way through it was not to
+            panic-edit every page, but to slow down, read the signals, and rebuild around
+            what people were actually trying to find.
+          </p>
+        </div>
+        <div class="overview-grid">
+          <div><strong>Signal reading</strong>Compared ranking changes with Search Console data, SERP shifts, and page-level performance.</div>
+          <div><strong>Intent checks</strong>Looked again at what the searcher needed now, not only what the old keyword plan said.</div>
+          <div><strong>Content rebuilding</strong>Updated weak or thin pages with clearer structure, better depth, and stronger usefulness.</div>
+          <div><strong>Calm reporting</strong>Turned volatility into a review rhythm so decisions were based on patterns, not fear.</div>
+        </div>
+      </section>
+
+      <section class="section dark">
+        <div class="section-heading">
+          <p class="kicker">What I built</p>
+          <h2>Search work that moved from setup to repeatable process.</h2>
+        </div>
+        <div class="work-grid">
+          <article class="work-card">
+            <h3>SEO audits and foundations</h3>
+            <p>
+              Audited crawlability, indexation, page architecture, metadata, redirect issues,
+              broken links, and technical blockers before building the content roadmap.
+            </p>
+          </article>
+          <article class="work-card">
+            <h3>B2B page building</h3>
+            <p>
+              Built service-led landing pages around commercial intent, buyer pain points,
+              internal linking, trust signals, conversion paths, and search-led page hierarchy.
+            </p>
+          </article>
+          <article class="work-card">
+            <h3>B2C organic pages</h3>
+            <p>
+              Created consumer-facing pages around informational and transactional intent,
+              using clear headings, FAQs, snippets, and content depth to support discovery.
+            </p>
+          </article>
+          <article class="work-card">
+            <h3>Keyword strategy</h3>
+            <p>
+              Built keyword maps by intent, search volume, difficulty, funnel stage,
+              location, content type, and business value so priorities were easier to defend.
+            </p>
+          </article>
+          <article class="work-card">
+            <h3>Schema and technical fixes</h3>
+            <p>
+              Worked on structured data, schema markup, on-page fixes, URL hygiene,
+              heading structure, and site health signals that improved search clarity.
+            </p>
+          </article>
+          <article class="work-card">
+            <h3>Reporting</h3>
+            <p>
+              Tracked clicks, impressions, CTR, average position, query movement, page
+              performance, and volatility patterns through Search Console reviews.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section proof-section">
+        <div class="section-heading">
+          <p class="kicker">Search Console snapshots</p>
+          <h2>The journey was tracked through clicks, impressions, CTR, and search visibility.</h2>
+        </div>
+        <div class="proof-grid">
+          <article class="proof-card">
+            <img src="https://i.ibb.co/dJ2gHYGR/Screenshot-2026-05-26-142846.png" alt="Search Console screenshot">
+            <h3>Search movement</h3>
+            <p>1.27K clicks, 15.1K impressions, and 8.4% average CTR shown in the report.</p>
+          </article>
+          <article class="proof-card">
+            <img src="https://i.ibb.co/B5TgPh9C/Screenshot-2026-05-26-142828.png" alt="Search Console three month screenshot">
+            <h3>Three-month view</h3>
+            <p>645 clicks, 40.7K impressions, 1.6% average CTR, and 18.1 average position.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section strategy-band">
+        <div>
+          <p class="kicker">Approach</p>
+          <h2>SEO had to become a habit, not a one-time fix.</h2>
+        </div>
+        <div class="story-copy">
+          <p>
+            The work moved across technical cleanup, search intent, content structure,
+            and business relevance. Some pages needed to speak to decision-makers. Others
+            needed to help individuals find the right information quickly.
+          </p>
+          <p>
+            The real shift was building a way of thinking that could survive volatility:
+            every page needed a purpose, every keyword needed context, and every report
+            needed to point toward the next practical decision.
+          </p>
+          <div class="tag-row">
+            <span>First SEO person</span>
+            <span>B2B SEO</span>
+            <span>B2C SEO</span>
+            <span>Technical SEO</span>
+            <span>SERP volatility</span>
+            <span>Reporting</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="pullquote">
+        <blockquote>
+          “The growth came from making SEO part of how the business planned, built, measured, reviewed, and adapted.”
+        </blockquote>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <a href="index.html">Back to portfolio</a>
+    </footer>
+  </body>
+</html>
