@@ -176,7 +176,7 @@
   filter: drop-shadow(0 24px 26px rgba(0, 0, 0, .42));
 }
 
-.murphys-book canvas {
+.murphys-book img {
   position: relative;
   z-index: 2;
   display: block;
@@ -187,8 +187,8 @@
   backface-visibility: hidden;
 }
 
-.murphys-book.turn-next canvas { animation: murphysTurnNext .58s cubic-bezier(.42, 0, .2, 1); }
-.murphys-book.turn-prev canvas { animation: murphysTurnPrev .58s cubic-bezier(.42, 0, .2, 1); }
+.murphys-book.turn-next img { animation: murphysTurnNext .58s cubic-bezier(.42, 0, .2, 1); }
+.murphys-book.turn-prev img { animation: murphysTurnPrev .58s cubic-bezier(.42, 0, .2, 1); }
 
 @keyframes murphysTurnNext {
   0% { transform: rotateY(0deg); opacity: 1; transform-origin: left center; }
@@ -411,6 +411,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .murphys-book.turn-next canvas,
-  .murphys-book.turn-prev canvas { animation: none; }
+  .murphys-book.turn-next img,
+  .murphys-book.turn-prev img { animation: none; }
 }
