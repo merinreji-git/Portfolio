@@ -9,7 +9,7 @@
 
   if (!page || !book || !stage || !previous || !next || !status || !progress) return;
 
-  const total = 13;
+  const total = 12;
   const source = (number) =>
    `murphys-page-${String(number).padStart(2, "0")}.webp?v=2`;
 
