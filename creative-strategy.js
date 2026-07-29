@@ -11,7 +11,7 @@
 
   const total = 13;
   const source = (number) =>
-    `murphys-page-${String(number).padStart(2, "0")}.webp`;
+   `murphys-page-${String(number).padStart(2, "0")}.webp?v=2`;
 
   let current = 1;
   let turning = false;
