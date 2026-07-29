@@ -1,7 +1,9 @@
-import * as pdfjsLib from "https://cdn.jsdelivr.net/npm/pdfjs-dist@6.1.200/build/pdf.mjs";
+const pdfjsLib = window.pdfjsLib;
 
-pdfjsLib.GlobalWorkerOptions.workerSrc =
-  "https://cdn.jsdelivr.net/npm/pdfjs-dist@6.1.200/build/pdf.worker.mjs";
+if (pdfjsLib) {
+  pdfjsLib.GlobalWorkerOptions.workerSrc =
+    "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+}
 
 const canvas = document.getElementById("murphysBookPage");
 const book = document.getElementById("murphysBook");
@@ -11,9 +13,19 @@ const next = document.getElementById("murphysNext");
 const status = document.getElementById("murphysPageStatus");
 const progress = document.getElementById("murphysProgressBar");
 
-if (canvas && book && stage && previous && next && status && progress) {
+if (
+  pdfjsLib &&
+  canvas &&
+  book &&
+  stage &&
+  previous &&
+  next &&
+  status &&
+  progress
+) {
   const pdfPath = "./Untitled%20design.pdf";
   const context = canvas.getContext("2d");
+
   let documentPdf;
   let current = 1;
   let total = 13;
@@ -33,7 +45,7 @@ if (canvas && book && stage && previous && next && status && progress) {
       try {
         renderTask.cancel();
       } catch {
-        // The previous render may already be complete.
+        // Previous render has already finished.
       }
     }
 
@@ -41,8 +53,13 @@ if (canvas && book && stage && previous && next && status && progress) {
     canvas.height = Math.floor(viewport.height);
     canvas.style.aspectRatio = `${viewport.width} / ${viewport.height}`;
 
-    renderTask = pdfPage.render({ canvasContext: context, viewport });
+    renderTask = pdfPage.render({
+      canvasContext: context,
+      viewport
+    });
+
     await renderTask.promise;
+
     canvas.setAttribute(
       "aria-label",
       `Murphy's Ice Cream digital advertising strategy, page ${pageNumber} of ${total}`
@@ -50,18 +67,32 @@ if (canvas && book && stage && previous && next && status && progress) {
   };
 
   const updateControls = () => {
-    status.textContent = `${String(current).padStart(2, "0")} / ${total}`;
+    status.textContent =
+      `${String(current).padStart(2, "0")} / ${String(total).padStart(2, "0")}`;
+
     progress.style.width = `${(current / total) * 100}%`;
     previous.disabled = current === 1;
     next.disabled = current === total;
   };
 
   const update = (newPage, direction) => {
-    if (turning || newPage < 1 || newPage > total || newPage === current) return;
+    if (
+      turning ||
+      newPage < 1 ||
+      newPage > total ||
+      newPage === current
+    ) {
+      return;
+    }
+
     turning = true;
+
     book.classList.remove("turn-next", "turn-prev");
     void book.offsetWidth;
-    book.classList.add(direction === "next" ? "turn-next" : "turn-prev");
+
+    book.classList.add(
+      direction === "next" ? "turn-next" : "turn-prev"
+    );
 
     window.setTimeout(async () => {
       current = newPage;
@@ -75,8 +106,13 @@ if (canvas && book && stage && previous && next && status && progress) {
     }, 650);
   };
 
-  previous.addEventListener("click", () => update(current - 1, "prev"));
-  next.addEventListener("click", () => update(current + 1, "next"));
+  previous.addEventListener("click", () => {
+    update(current - 1, "prev");
+  });
+
+  next.addEventListener("click", () => {
+    update(current + 1, "next");
+  });
 
   stage.addEventListener(
     "touchstart",
@@ -89,28 +125,63 @@ if (canvas && book && stage && previous && next && status && progress) {
   stage.addEventListener(
     "touchend",
     (event) => {
-      const distance = event.changedTouches[0].clientX - touchStart;
+      const distance =
+        event.changedTouches[0].clientX - touchStart;
+
       if (Math.abs(distance) < 45) return;
-      update(current + (distance < 0 ? 1 : -1), distance < 0 ? "next" : "prev");
+
+      if (distance < 0) {
+        update(current + 1, "next");
+      } else {
+        update(current - 1, "prev");
+      }
     },
     { passive: true }
   );
 
   document.addEventListener("keydown", (event) => {
     const bounds = stage.getBoundingClientRect();
-    const visible = bounds.top < window.innerHeight && bounds.bottom > 0;
+    const visible =
+      bounds.top < window.innerHeight && bounds.bottom > 0;
+
     if (!visible) return;
-    if (event.key === "ArrowRight") update(current + 1, "next");
-    if (event.key === "ArrowLeft") update(current - 1, "prev");
+
+    if (event.key === "ArrowRight") {
+      update(current + 1, "next");
+    }
+
+    if (event.key === "ArrowLeft") {
+      update(current - 1, "prev");
+    }
   });
 
   try {
-    documentPdf = await pdfjsLib.getDocument(pdfPath).promise;
+    const pdfResponse = await fetch(pdfPath);
+
+    if (!pdfResponse.ok) {
+      throw new Error(
+        `PDF request failed with status ${pdfResponse.status}`
+      );
+    }
+
+    const pdfData = new Uint8Array(
+      await pdfResponse.arrayBuffer()
+    );
+
+    documentPdf = await pdfjsLib.getDocument({
+      data: pdfData
+    }).promise;
+
     total = documentPdf.numPages;
+
     await renderPage(current);
     updateControls();
   } catch (error) {
-    console.error("Murphy's strategy PDF could not be loaded.", error);
+    console.error(
+      "Murphy's strategy PDF could not be loaded:",
+      error
+    );
+
     status.textContent = "PDF unavailable";
     previous.disabled = true;
     next.disabled = true;
