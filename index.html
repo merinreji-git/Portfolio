@@ -12,6 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="creative-strategy.css">
   </head>
   <body>
     <header class="site-header">
@@ -292,6 +293,170 @@
             a PDF, a storybook, or a working screen that makes the idea easier to see.
           </p>
         </div>
+
+        <section
+  id="creative-strategy"
+  class="murphys-strategy-section reveal"
+  aria-labelledby="murphysStrategyTitle"
+>
+  <div class="murphys-ambient" aria-hidden="true"></div>
+
+  <header class="murphys-strategy-intro">
+    <div>
+      <p class="kicker">Murphy's Ice Cream · Creative strategy</p>
+
+      <h2 id="murphysStrategyTitle">
+        Irish heritage,<br>
+        <em>made scroll-stopping.</em>
+      </h2>
+    </div>
+
+    <div class="murphys-intro-copy">
+      <p>
+        A digital advertising strategy for a premium Irish artisan brand,
+        shaped around local ingredients, sensory storytelling, audience
+        personas and a campaign idea designed to turn brand warmth into
+        store visits and sales.
+      </p>
+
+      <div class="murphys-tags" aria-label="Project focus">
+        <span>Brand strategy</span>
+        <span>Audience personas</span>
+        <span>Storyboarding</span>
+        <span>AI-assisted concept</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="murphys-strategy-grid">
+
+    <!-- STRATEGY FLIPBOOK -->
+    <article class="murphys-book-card" aria-labelledby="murphysBookTitle">
+      <div class="murphys-card-topline">
+        <div>
+          <span class="murphys-card-number">01</span>
+          <p>Strategy deck · 13 pages</p>
+        </div>
+
+        <a
+          href="./Untitled%20design.pdf"
+          target="_blank"
+          rel="noopener"
+        >
+          Open PDF <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+
+      <div
+        class="murphys-book-stage"
+        id="murphysBookStage"
+        aria-live="polite"
+      >
+        <div class="murphys-book-glow" aria-hidden="true"></div>
+
+        <div class="murphys-book" id="murphysBook">
+          <div class="murphys-page-stack" aria-hidden="true"></div>
+
+          <canvas
+            id="murphysBookPage"
+            role="img"
+            aria-label="Murphy's Ice Cream digital advertising strategy, page 1 of 13"
+          ></canvas>
+
+          <div class="murphys-page-shine" aria-hidden="true"></div>
+        </div>
+      </div>
+
+      <div
+        class="murphys-book-controls"
+        aria-label="Murphy's strategy flipbook controls"
+      >
+        <button
+          type="button"
+          id="murphysPrev"
+          aria-label="Previous strategy page"
+        >
+          <span aria-hidden="true">←</span> Previous
+        </button>
+
+        <div>
+          <span id="murphysPageStatus">01 / 13</span>
+
+          <div class="murphys-progress" aria-hidden="true">
+            <i id="murphysProgressBar"></i>
+          </div>
+        </div>
+
+        <button
+          type="button"
+          id="murphysNext"
+          aria-label="Next strategy page"
+        >
+          Next <span aria-hidden="true">→</span>
+        </button>
+      </div>
+
+      <p class="murphys-swipe-note">
+        Use the arrows, keyboard, or swipe to turn the pages.
+      </p>
+    </article>
+
+    <!-- AI AD CONCEPT -->
+    <article class="murphys-film-card" aria-labelledby="murphysFilmTitle">
+      <div class="murphys-film-heading">
+        <span class="murphys-card-number">02</span>
+
+        <div>
+          <p>From strategy to screen</p>
+          <h3 id="murphysFilmTitle">AI-created ad concept</h3>
+        </div>
+      </div>
+
+      <div class="murphys-film-frame">
+        <div class="murphys-film-grain" aria-hidden="true"></div>
+
+        <video controls preload="metadata" playsinline>
+          <source
+            src="./Untitled%20design%20(10).mp4"
+            type="video/mp4"
+          >
+
+          Your browser does not support embedded video.
+        </video>
+
+        <span class="murphys-film-label">
+          Concept film · 00:16
+        </span>
+      </div>
+
+      <div class="murphys-film-story">
+        <p class="murphys-quote">
+          “The Scoop That Brought Her Back”
+        </p>
+
+        <p>
+          A warm, nostalgia-led story showing how a dairy-free scoop can
+          bring back the comfort and joy of a much-loved memory. The concept
+          translates persona insight into a simple emotional narrative
+          created for social media.
+        </p>
+      </div>
+
+      <dl class="murphys-contribution">
+        <div>
+          <dt>My role</dt>
+          <dd>Research, strategy and creative direction</dd>
+        </div>
+
+        <div>
+          <dt>Built with</dt>
+          <dd>Canva, AI visual tools and video editing</dd>
+        </div>
+      </dl>
+    </article>
+
+  </div>
+</section>
 
         <section class="storybook-section reveal" aria-labelledby="storybookTitle">
           <div class="storybook-copy">
@@ -672,5 +837,7 @@
     </footer>
 
     <script src="script.js"></script>
+<script src="script.js"></script>
+<script type="module" src="creative-strategy.js"></script>
   </body>
 </html>
