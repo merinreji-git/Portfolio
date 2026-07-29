@@ -1,0 +1,416 @@
+.murphys-strategy-section {
+  --murphys-ink: #172016;
+  --murphys-cream: #f4ead6;
+  --murphys-paper: #fffaf0;
+  --murphys-gold: #c9943e;
+  --murphys-coral: #ee8b73;
+  position: relative;
+  isolation: isolate;
+  width: min(1220px, calc(100% - 40px));
+  margin: clamp(70px, 10vw, 140px) auto;
+  padding: clamp(28px, 5vw, 74px);
+  overflow: hidden;
+  color: var(--murphys-cream);
+  border: 1px solid rgba(255, 250, 240, .13);
+  border-radius: 32px;
+  background:
+    radial-gradient(circle at 82% 20%, rgba(238, 139, 115, .16), transparent 28%),
+    radial-gradient(circle at 15% 84%, rgba(201, 148, 62, .12), transparent 30%),
+    linear-gradient(145deg, #172117 0%, #0d120d 48%, #202818 100%);
+  box-shadow: 0 38px 90px rgba(14, 18, 13, .28);
+}
+
+.murphys-strategy-section::before {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  z-index: -1;
+  pointer-events: none;
+  border: 1px solid rgba(201, 148, 62, .2);
+  border-radius: 24px;
+}
+
+.murphys-ambient {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  opacity: .22;
+  background-image: url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.12'/%3E%3C/svg%3E");
+}
+
+.murphys-strategy-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(300px, .92fr);
+  gap: clamp(34px, 7vw, 100px);
+  align-items: end;
+  margin-bottom: clamp(42px, 6vw, 78px);
+}
+
+.murphys-strategy-intro .kicker,
+.murphys-card-topline p,
+.murphys-film-heading p {
+  color: #dfb96d;
+}
+
+.murphys-strategy-intro h2 {
+  max-width: 720px;
+  margin: 14px 0 0;
+  color: #fff8e9;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(42px, 6.3vw, 88px);
+  font-weight: 500;
+  line-height: .94;
+  letter-spacing: -.045em;
+}
+
+.murphys-strategy-intro h2 em {
+  color: var(--murphys-coral);
+  font-weight: 500;
+}
+
+.murphys-intro-copy > p {
+  margin: 0;
+  color: rgba(255, 248, 233, .73);
+  font-size: clamp(16px, 1.4vw, 19px);
+  line-height: 1.75;
+}
+
+.murphys-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 25px;
+}
+
+.murphys-tags span {
+  padding: 8px 12px;
+  color: rgba(255, 248, 233, .82);
+  border: 1px solid rgba(255, 248, 233, .16);
+  border-radius: 999px;
+  font: 500 11px/1 "DM Mono", monospace;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.murphys-strategy-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(300px, .65fr);
+  gap: clamp(22px, 3vw, 36px);
+  align-items: stretch;
+}
+
+.murphys-book-card,
+.murphys-film-card {
+  min-width: 0;
+  border: 1px solid rgba(255, 248, 233, .14);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, .045);
+  box-shadow: inset 0 1px rgba(255, 255, 255, .05);
+  backdrop-filter: blur(7px);
+}
+
+.murphys-book-card {
+  padding: clamp(18px, 3vw, 34px);
+}
+
+.murphys-card-topline {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.murphys-card-topline > div,
+.murphys-film-heading {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.murphys-card-number {
+  color: var(--murphys-coral);
+  font: 500 11px/1 "DM Mono", monospace;
+  letter-spacing: .08em;
+}
+
+.murphys-card-topline p,
+.murphys-film-heading p {
+  margin: -2px 0 0;
+  font: 500 11px/1.3 "DM Mono", monospace;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.murphys-card-topline a {
+  color: rgba(255, 248, 233, .75);
+  font-size: 13px;
+  text-decoration: none;
+  transition: color .25s ease;
+}
+
+.murphys-card-topline a:hover { color: #fff8e9; }
+
+.murphys-book-stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: clamp(290px, 41vw, 515px);
+  margin: 24px 0 16px;
+  perspective: 1800px;
+}
+
+.murphys-book-glow {
+  position: absolute;
+  width: 78%;
+  height: 64%;
+  border-radius: 50%;
+  background: rgba(238, 139, 115, .14);
+  filter: blur(55px);
+}
+
+.murphys-book {
+  position: relative;
+  width: min(96%, 720px);
+  aspect-ratio: 16 / 9;
+  transform-style: preserve-3d;
+  filter: drop-shadow(0 24px 26px rgba(0, 0, 0, .42));
+}
+
+.murphys-book canvas {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px 11px 11px 5px;
+  backface-visibility: hidden;
+}
+
+.murphys-book.turn-next canvas { animation: murphysTurnNext .58s cubic-bezier(.42, 0, .2, 1); }
+.murphys-book.turn-prev canvas { animation: murphysTurnPrev .58s cubic-bezier(.42, 0, .2, 1); }
+
+@keyframes murphysTurnNext {
+  0% { transform: rotateY(0deg); opacity: 1; transform-origin: left center; }
+  48% { transform: rotateY(-78deg); opacity: .35; transform-origin: left center; }
+  49% { transform: rotateY(78deg); opacity: .35; transform-origin: right center; }
+  100% { transform: rotateY(0deg); opacity: 1; transform-origin: right center; }
+}
+
+@keyframes murphysTurnPrev {
+  0% { transform: rotateY(0deg); opacity: 1; transform-origin: right center; }
+  48% { transform: rotateY(78deg); opacity: .35; transform-origin: right center; }
+  49% { transform: rotateY(-78deg); opacity: .35; transform-origin: left center; }
+  100% { transform: rotateY(0deg); opacity: 1; transform-origin: left center; }
+}
+
+.murphys-page-stack {
+  position: absolute;
+  inset: 5px -10px -8px 10px;
+  z-index: 0;
+  border-radius: 7px 13px 13px 7px;
+  background: var(--murphys-paper);
+  box-shadow:
+    0 2px 0 #d7cab1,
+    0 5px 0 #eee1ca,
+    0 8px 0 #cdbd9f;
+}
+
+.murphys-page-shine {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  border-radius: 5px 11px 11px 5px;
+  box-shadow: inset 14px 0 26px rgba(14, 18, 13, .1);
+}
+
+.murphys-book-controls {
+  display: grid;
+  grid-template-columns: 1fr minmax(130px, .8fr) 1fr;
+  gap: 16px;
+  align-items: center;
+}
+
+.murphys-book-controls button {
+  appearance: none;
+  padding: 11px 0;
+  color: rgba(255, 248, 233, .82);
+  border: 0;
+  background: transparent;
+  font: 500 12px/1 "DM Mono", monospace;
+  cursor: pointer;
+}
+
+.murphys-book-controls button:first-child { text-align: left; }
+.murphys-book-controls button:last-child { text-align: right; }
+.murphys-book-controls button:hover { color: var(--murphys-coral); }
+.murphys-book-controls button:disabled { opacity: .28; cursor: default; }
+
+#murphysPageStatus {
+  display: block;
+  margin-bottom: 8px;
+  text-align: center;
+  color: #fff8e9;
+  font: 500 11px/1 "DM Mono", monospace;
+  letter-spacing: .12em;
+}
+
+.murphys-progress {
+  height: 2px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, .14);
+}
+
+.murphys-progress i {
+  display: block;
+  width: 7.692%;
+  height: 100%;
+  background: var(--murphys-coral);
+  transition: width .35s ease;
+}
+
+.murphys-swipe-note {
+  margin: 17px 0 0;
+  color: rgba(255, 248, 233, .42);
+  font-size: 11px;
+  text-align: center;
+}
+
+.murphys-film-card {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(18px, 2.5vw, 28px);
+  background: linear-gradient(160deg, rgba(255,255,255,.07), rgba(255,255,255,.025));
+}
+
+.murphys-film-heading {
+  margin-bottom: 22px;
+}
+
+.murphys-film-heading h3 {
+  margin: 5px 0 0;
+  color: #fff8e9;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(25px, 2.6vw, 38px);
+  font-weight: 500;
+}
+
+.murphys-film-frame {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 248, 233, .14);
+  border-radius: 18px;
+  background: #080b08;
+  box-shadow: 0 24px 40px rgba(0, 0, 0, .28);
+}
+
+.murphys-film-frame video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.murphys-film-grain {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: .14;
+  mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg width='90' height='90' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+}
+
+.murphys-film-label {
+  position: absolute;
+  z-index: 3;
+  top: 13px;
+  right: 13px;
+  padding: 7px 9px;
+  color: rgba(255, 248, 233, .82);
+  border: 1px solid rgba(255, 248, 233, .17);
+  border-radius: 999px;
+  background: rgba(11, 15, 10, .7);
+  font: 500 9px/1 "DM Mono", monospace;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+}
+
+.murphys-film-story {
+  padding: 24px 4px 20px;
+}
+
+.murphys-quote {
+  margin: 0 0 11px;
+  color: var(--murphys-coral);
+  font: italic 500 clamp(20px, 2vw, 28px)/1.2 "Playfair Display", Georgia, serif;
+}
+
+.murphys-film-story > p:last-child {
+  margin: 0;
+  color: rgba(255, 248, 233, .66);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.murphys-contribution {
+  margin: auto 0 0;
+  border-top: 1px solid rgba(255, 248, 233, .12);
+}
+
+.murphys-contribution div {
+  display: grid;
+  grid-template-columns: 78px 1fr;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 248, 233, .1);
+}
+
+.murphys-contribution dt {
+  color: #dfb96d;
+  font: 500 9px/1.4 "DM Mono", monospace;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.murphys-contribution dd {
+  margin: 0;
+  color: rgba(255, 248, 233, .72);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+@media (max-width: 900px) {
+  .murphys-strategy-intro,
+  .murphys-strategy-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .murphys-strategy-intro { gap: 24px; }
+  .murphys-film-card { max-width: 560px; }
+  .murphys-book-stage { min-height: 44vw; }
+}
+
+@media (max-width: 620px) {
+  .murphys-strategy-section {
+    width: calc(100% - 20px);
+    padding: 30px 18px;
+    border-radius: 22px;
+  }
+
+  .murphys-strategy-section::before { display: none; }
+  .murphys-strategy-intro h2 { font-size: clamp(38px, 13vw, 58px); }
+  .murphys-book-stage { min-height: 48vw; margin-top: 16px; }
+  .murphys-card-topline { align-items: center; }
+  .murphys-card-topline p { display: none; }
+  .murphys-book-controls { grid-template-columns: 1fr 100px 1fr; }
+  .murphys-book-controls button { font-size: 0; }
+  .murphys-book-controls button span { font-size: 18px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .murphys-book.turn-next canvas,
+  .murphys-book.turn-prev canvas { animation: none; }
+}
