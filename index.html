@@ -323,131 +323,50 @@
       margin: 0;
     }
 
-    .mug-merch-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: clamp(1.1rem, 2.5vw, 1.75rem);
-      max-width: 1080px;
+    .mug-merch-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-end;
+      gap: clamp(0.5rem, 2vw, 1.5rem);
+      max-width: 1200px;
       margin: 0 auto;
     }
 
-    .mug-card {
-      background: #fffdf9;
-      border: 1px solid rgba(0, 0, 0, 0.06);
-      border-radius: 18px;
-      padding: 1.25rem 1.1rem 1.4rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      box-shadow: 0 10px 24px rgba(60, 45, 30, 0.06);
-      transition: transform 0.35s ease, box-shadow 0.35s ease, rotate 0.35s ease;
-      rotate: var(--tilt, 0deg);
-    }
-
-    .mug-card:nth-child(1) { --tilt: -2deg; }
-    .mug-card:nth-child(2) { --tilt: 1.5deg; }
-    .mug-card:nth-child(3) { --tilt: -1deg; }
-    .mug-card:nth-child(4) { --tilt: 2deg; }
-    .mug-card:nth-child(5) { --tilt: -1.5deg; }
-    .mug-card:nth-child(6) { --tilt: 1deg; }
-
-    .mug-card:hover {
-      rotate: 0deg;
-      transform: translateY(-6px) scale(1.03);
-      box-shadow: 0 18px 34px rgba(60, 45, 30, 0.14);
-    }
-
-    .mug-card-frame {
-      width: 100%;
-      aspect-ratio: 1 / 1;
-      border-radius: 14px;
-      overflow: hidden;
-      background: #f4efe6;
-      margin-bottom: 0.85rem;
-    }
-
-    .mug-card-frame img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    .mug-merch-row img {
+      width: clamp(150px, 18vw, 230px);
+      height: auto;
       display: block;
+      rotate: var(--tilt, 0deg);
+      transition: transform 0.35s ease, rotate 0.35s ease;
     }
 
-    .mug-card-label {
-      font-family: "DM Mono", monospace;
-      font-size: 0.72rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: #a68a63;
+    .mug-merch-row img:hover {
+      rotate: 0deg;
+      transform: translateY(-8px) scale(1.05);
     }
 
-    .mug-card-name {
-      font-family: "DM Sans", sans-serif;
-      font-weight: 500;
-      font-size: 0.95rem;
-      margin-top: 0.2rem;
-      color: #2c2925;
-    }
+    .mug-merch-row img:nth-child(1) { --tilt: -3deg; }
+    .mug-merch-row img:nth-child(2) { --tilt: 2deg; }
+    .mug-merch-row img:nth-child(3) { --tilt: -2deg; }
+    .mug-merch-row img:nth-child(4) { --tilt: 3deg; }
+    .mug-merch-row img:nth-child(5) { --tilt: -1.5deg; }
   </style>
 
   <div class="mug-merch-intro">
     <p class="kicker">Cullen Sheep Farm · Shop merch</p>
-    <h2 id="mugMerchTitle">Six mugs for the farm shop shelf.</h2>
+    <h2 id="mugMerchTitle">A mug line for the farm shop shelf.</h2>
     <p>A custom mug line designed to give Cullen Sheep Farm a new signature product — something visitors take home from the farm shop and keep using long after the trip.</p>
   </div>
 
-  <div class="mug-merch-grid">
-    <article class="mug-card">
-      <div class="mug-card-frame">
-        <img src="1.png" alt="Cullen Sheep Farm mug design one">
-      </div>
-      <span class="mug-card-label">Design 01</span>
-      <span class="mug-card-name">Little Lamb</span>
-    </article>
-
-    <article class="mug-card">
-      <div class="mug-card-frame">
-        <img src="2.png" alt="Cullen Sheep Farm mug design two">
-      </div>
-      <span class="mug-card-label">Design 02</span>
-      <span class="mug-card-name">Wildflower Meadow</span>
-    </article>
-
-    <article class="mug-card">
-      <div class="mug-card-frame">
-        <img src="3.png" alt="Cullen Sheep Farm mug design three">
-      </div>
-      <span class="mug-card-label">Design 03</span>
-      <span class="mug-card-name">Sheepdog's Watch</span>
-    </article>
-
-    <article class="mug-card">
-      <div class="mug-card-frame">
-        <img src="4.png" alt="Cullen Sheep Farm mug design four">
-      </div>
-      <span class="mug-card-label">Design 04</span>
-      <span class="mug-card-name">Misty Morning Fold</span>
-    </article>
-
-    <article class="mug-card">
-      <div class="mug-card-frame">
-        <img src="5.png" alt="Cullen Sheep Farm mug design five">
-      </div>
-      <span class="mug-card-label">Design 05</span>
-      <span class="mug-card-name">Wool & Whimsy</span>
-    </article>
-
-    <article class="mug-card">
-      <div class="mug-card-frame">
-        <img src="6.png" alt="Cullen Sheep Farm mug design six">
-      </div>
-      <span class="mug-card-label">Design 06</span>
-      <span class="mug-card-name">County Kerry Green</span>
-    </article>
+  <div class="mug-merch-row">
+    <img src="2.png" alt="Cullen Sheep Farm mug design - Wildflower Meadow">
+    <img src="3.png" alt="Cullen Sheep Farm mug design - Sheepdog's Watch">
+    <img src="4.png" alt="Cullen Sheep Farm mug design - Misty Morning Fold">
+    <img src="5.png" alt="Cullen Sheep Farm mug design - Wool & Whimsy">
+    <img src="6.png" alt="Cullen Sheep Farm mug design - County Kerry Green">
   </div>
-</section>
-        <section
+</section>        <section
   id="creative-strategy"
   class="murphys-strategy-section reveal"
   aria-labelledby="murphysStrategyTitle"
