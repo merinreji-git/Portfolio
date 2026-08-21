@@ -294,7 +294,159 @@
             a PDF, a storybook, or a working screen that makes the idea easier to see.
           </p>
         </div>
+<section id="merch" class="mug-merch-section reveal" aria-labelledby="mugMerchTitle">
+  <style>
+    .mug-merch-section {
+      padding: clamp(3rem, 6vw, 5rem) clamp(1.25rem, 5vw, 4rem);
+      position: relative;
+    }
 
+    .mug-merch-intro {
+      max-width: 640px;
+      margin: 0 auto clamp(2rem, 4vw, 3rem);
+      text-align: center;
+    }
+
+    .mug-merch-intro h2 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(1.9rem, 3.5vw, 2.6rem);
+      font-style: italic;
+      font-weight: 600;
+      margin: 0.35rem 0 0.75rem;
+    }
+
+    .mug-merch-intro p {
+      font-family: "DM Sans", sans-serif;
+      font-size: 0.98rem;
+      line-height: 1.6;
+      color: #5c5650;
+      margin: 0;
+    }
+
+    .mug-merch-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: clamp(1.1rem, 2.5vw, 1.75rem);
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    .mug-card {
+      background: #fffdf9;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      border-radius: 18px;
+      padding: 1.25rem 1.1rem 1.4rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      box-shadow: 0 10px 24px rgba(60, 45, 30, 0.06);
+      transition: transform 0.35s ease, box-shadow 0.35s ease, rotate 0.35s ease;
+      rotate: var(--tilt, 0deg);
+    }
+
+    .mug-card:nth-child(1) { --tilt: -2deg; }
+    .mug-card:nth-child(2) { --tilt: 1.5deg; }
+    .mug-card:nth-child(3) { --tilt: -1deg; }
+    .mug-card:nth-child(4) { --tilt: 2deg; }
+    .mug-card:nth-child(5) { --tilt: -1.5deg; }
+    .mug-card:nth-child(6) { --tilt: 1deg; }
+
+    .mug-card:hover {
+      rotate: 0deg;
+      transform: translateY(-6px) scale(1.03);
+      box-shadow: 0 18px 34px rgba(60, 45, 30, 0.14);
+    }
+
+    .mug-card-frame {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border-radius: 14px;
+      overflow: hidden;
+      background: #f4efe6;
+      margin-bottom: 0.85rem;
+    }
+
+    .mug-card-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .mug-card-label {
+      font-family: "DM Mono", monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #a68a63;
+    }
+
+    .mug-card-name {
+      font-family: "DM Sans", sans-serif;
+      font-weight: 500;
+      font-size: 0.95rem;
+      margin-top: 0.2rem;
+      color: #2c2925;
+    }
+  </style>
+
+  <div class="mug-merch-intro">
+    <p class="kicker">Merch · Mug designs</p>
+    <h2 id="mugMerchTitle">Six mugs, six little stories.</h2>
+    <p>A small side project turning brand and personal illustration work into something you can actually hold your coffee in.</p>
+  </div>
+
+  <div class="mug-merch-grid">
+    <article class="mug-card">
+      <div class="mug-card-frame">
+        <img src="assets/merch/mug-01.png" alt="Mug design one">
+      </div>
+      <span class="mug-card-label">Design 01</span>
+      <span class="mug-card-name">Name it here</span>
+    </article>
+
+    <article class="mug-card">
+      <div class="mug-card-frame">
+        <img src="assets/merch/mug-02.png" alt="Mug design two">
+      </div>
+      <span class="mug-card-label">Design 02</span>
+      <span class="mug-card-name">Name it here</span>
+    </article>
+
+    <article class="mug-card">
+      <div class="mug-card-frame">
+        <img src="assets/merch/mug-03.png" alt="Mug design three">
+      </div>
+      <span class="mug-card-label">Design 03</span>
+      <span class="mug-card-name">Name it here</span>
+    </article>
+
+    <article class="mug-card">
+      <div class="mug-card-frame">
+        <img src="assets/merch/mug-04.png" alt="Mug design four">
+      </div>
+      <span class="mug-card-label">Design 04</span>
+      <span class="mug-card-name">Name it here</span>
+    </article>
+
+    <article class="mug-card">
+      <div class="mug-card-frame">
+        <img src="assets/merch/mug-05.png" alt="Mug design five">
+      </div>
+      <span class="mug-card-label">Design 05</span>
+      <span class="mug-card-name">Name it here</span>
+    </article>
+
+    <article class="mug-card">
+      <div class="mug-card-frame">
+        <img src="assets/merch/mug-06.png" alt="Mug design six">
+      </div>
+      <span class="mug-card-label">Design 06</span>
+      <span class="mug-card-name">Name it here</span>
+    </article>
+  </div>
+</section>
         <section
   id="creative-strategy"
   class="murphys-strategy-section reveal"
